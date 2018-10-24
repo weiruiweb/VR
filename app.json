@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/appointment/appointment",
+    "pages/user/user",
+    "pages/user_address/user_address",
+    "pages/user_address_new/user_address_new",
+    "pages/user_credit/user_credit",
+    "pages/user_exchange/user_exchange",
+    "pages/user_order/user_order",
+    "pages/user_account/user_account",
+    "pages/user_member/user_member",
+    "pages/user_member_record/user_member_record",
+    "pages/member/member",
+    "pages/member_detail/member_detail",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/appoint_detail/appoint_detail",
+    "pages/index_detail/index_detail",
+    "pages/confirm_order/confirm_order",
+    "pages/index_relation/index_relation",
+    "pages/index_relation_detail/index_relation_detail",
+    "pages/index_detail1/index_detail1"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#262626",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "#fff"
+  }
+}

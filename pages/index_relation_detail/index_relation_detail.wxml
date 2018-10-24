@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="w710">
+  <view class="relation w710">
+      <view class="relation_cont">
+        <view class="font30" style="height:60rpx;line-height: 60rpx;">标题标题标题标题标题标题</view>
+        <view class="font24">内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内</view>
+      </view>
+      <view class="relation_img">
+        <image src="/images/product.png"></image>
+      </view>
+      <view class="font24">内容内容内容内容内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内容内容内容内容内内容内容内容内容内容内</view>
+  </view>
+</view>

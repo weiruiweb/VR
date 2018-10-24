@@ -1,0 +1,75 @@
+/**index.wxss**/
+@import "../../wxParse/wxParse.wxss";
+view{
+	color:#f2f2f2;
+}
+page{
+	width:100%;
+	min-height:100%;
+	background: #333;
+}
+.tab{
+	height:80rpx;
+	border-bottom:solid 1px #3c3c3c;
+}
+.tab_item{
+	width:33.33%;
+	text-align:center;
+	height:80rpx;
+	line-height:80rpx;
+}
+.tab_this{
+	color:#3ab3c3;
+	border-bottom:solid 1px #3ab3c3;
+}
+.tab_item text{
+	height:78rpx;
+	line-height:78rpx;
+	display:inline-block;
+}
+/*******************内容************************/
+.content_box{
+	padding-top: 20rpx;
+	border-radius: 10rpx;
+}
+.product{
+	height:208rpx;
+	border-bottom:solid 1px #515151;
+}
+.product_box{
+	width:100%;
+	height:156rpx;
+
+}
+.product_detail{
+	width:100%;
+	height:150rpx;
+}
+.product_left{
+	width:31.5%;
+	height:100%;
+}
+.product_left image{
+	width:194rpx;
+	height:156rpx;
+	border-radius: 10rpx;
+}
+.product_right{
+	width:68.5%;
+	height:100%;
+}
+.product_price{
+	width:100%;
+}
+.test{
+	height:100%;
+	display:flex;
+	flex-flow: row wrap;
+	align-content:space-between;
+}
+.product_name{
+	width:60%
+}
+.product_date{
+	width:40%;
+}

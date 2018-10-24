@@ -1,0 +1,64 @@
+/**index.wxss**/
+
+@import "../../wxParse/wxParse.wxss"; 
+view{
+	color:#f2f2f2;
+}
+page{
+	width:100%;
+	min-height:100%;
+	background:#333;
+}
+.appointment{
+	border-radius:20rpx;
+}
+.appointment image{
+	width:100%;
+	height:380rpx;
+}
+.vr_store{
+	height:114rpx;
+}
+.store_left{
+	width:80%;
+}
+.store_right{
+	width:20%;
+	text-align:center;
+}
+.store__cont{
+	width:100%;
+	height:84rpx;
+}
+.stroe_icon{
+	width:10%;
+}
+.stroe_text{
+	width:90%;
+}
+.store_list {
+	width:100%;
+}
+.appoint_tlt{
+	height:90rpx;
+	line-height:110rpx;
+	overflow:hidden;
+}
+.recommend_left{
+	background:#262626;
+	width:48.5%;
+	border-radius: 10rpx;
+	padding-bottom: 20rpx;
+	margin-bottom:20rpx;
+}
+.recommend_left image{
+	width:100%;
+	height: 252rpx;
+}
+.product_name1{
+	height:66rpx;
+	line-height: 66rpx;
+}
+.product_pro{
+	text-align: center;
+}

@@ -1,0 +1,30 @@
+<!--index1.wxml-->
+<view class="w710">
+    <view class="member">
+        <image src="/images/member_bg.png"></image>
+        <view class="member_cont w710">
+            <view class="member_type flex">
+                <view class="type_left">金卡</view>
+                <view class="type_left type_right color2">¥2000</view>
+            </view>
+            <view class="member_detail font28">内内容内容内容内容内容内容内容内容内容内容容内内容内容内容内容内容内容内容容</view>
+            <view class="date font26">
+                <text>有效期</text><text>2018-9-9</text><text>2018-9-9</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="user_all font30 color3 w710">
+    <view class="w710 bg">
+        <view class="user_infor flex"  bindtap="intoPath" data-path="/pages/member/member">
+            <view class="user_icon" style="{{img}};background-position: -122px -27px;"></view>
+            <text>会员充值</text>
+        </view>
+        <view class="user_infor flex" bindtap="intoPath" data-path="/pages/user_member_record/user_member_record" style="border: none;">
+            <view class="user_icon" style="{{img}};background-position: -144px -30px;"></view>
+            <text>流水记录</text>
+        </view>
+    </view>
+</view>
+
+

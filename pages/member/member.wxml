@@ -1,0 +1,45 @@
+<!--index1.wxml-->
+<view class="w710">
+    <view class="member" bindtap="intoPath" data-path="/pages/member_detail/member_detail">
+        <image src="/images/member_bg.png"></image>
+        <view class="member_cont w710">
+            <view class="member_type flex">
+                <view class="type_left">金卡</view>
+                <view class="type_left type_right color2">¥2000</view>
+            </view>
+            <view class="member_detail font28">内内容内容内容内容内容内容内容内容内容内容容内内容内容内容内容内容内容内容容</view>
+            <view class="date font26">
+                <text>有效期</text><text>2018-9-9</text><text>2018-9-9</text>
+            </view>
+        </view>
+    </view>
+    <view class="member" bindtap="intoPath" data-path="/pages/member_detail/member_detail">
+        <image src="/images/member_bg.png"></image>
+        <view class="member_cont w710">
+            <view class="member_type flex">
+                <view class="type_left">金卡</view>
+                <view class="type_left type_right color2">¥2000</view>
+            </view>
+            <view class="member_detail font28">内内容内容内容内容内容内容内容内容内容内容容内内容内容内容内容内容内容内容容</view>
+            <view class="date font26">
+                <text>有效期</text><text>2018-9-9</text><text>2018-9-9</text>
+            </view>
+        </view>
+    </view>
+    <view class="instruction w710">
+        <view class="instruction_box">
+            <view class="tlt font30">
+                <view class="tlt_cont">解释说明</view>
+            </view>
+            <view class="font24">
+                1.解释说明解释说明解释说明解释说明解释说明
+                2.解释说明解释说明解释说明解释说明解释说明
+                3.解释说明解释说明解释说明解释说明解释说明
+            </view>
+        </view>
+    </view>
+</view>
+
+
+
+

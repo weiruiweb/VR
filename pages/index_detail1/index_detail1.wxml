@@ -1,0 +1,44 @@
+<!--detail.wxml-->
+<view id="details">
+<view class="banner">
+	<image src="/images/product.png"></image>
+</view>
+<view class="detail w710">
+	<view class="product_top">
+		<view class="price_sale">
+			<view class="product_name avoidOverflow">
+				网站开发高端定制网站开发高端定制网站开发高端定制网站开发高端定制网站开发高
+			</view>
+			<view class="font28 flexRowBetween">
+				<view class="font32 color2">¥500</view>
+				<view class="font28">活动时间：2018-9-9</view>
+			</view>
+		</view>
+	</view>
+	<view class="detail_show flex" style="margin-top: 30rpx;">
+		<view class="font28" style="width:10%;min-height: 50rpx;	">详情</view>
+		<view class="font28" style="width:90%">详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情详情</view>
+	</view>
+</view>
+<view class="{{isShow?'mask':''}}"></view>
+
+</view>
+<view id="buy">
+	<view class="buy_click">
+		<view class="consult collect">
+			<view style="width:19px;height:17px;{{img}};background-position: -88px 0px;margin:0 auto;"></view>
+			<view class="font28">首页</view>
+		</view>
+		<view class="consult collect">
+			<view style="width:17px;height:17px;{{img}};background-position: -112px 0px;margin:0 auto;"></view>
+			<view class="font28">分享</view>
+		</view>
+		<view class="go_buy flexRowBetween" >
+			<view class="go_pay bg" bindtap="intoPath" data-path="/pages/appointment_detail/appointment_detail">
+				立即预约
+			</view>
+		</view>
+	</view>
+</view>
+
+

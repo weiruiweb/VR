@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<view class="tab font30 flexRowBetween">
+    <view class="tab_item " data-id="0" bindtap="tab">
+        <text class="{{currentId == 0?'tab_this':''}}">全部</text>
+    </view>
+    <view class="tab_item " data-id="1" bindtap="tab">
+        <text class="{{currentId == 1?'tab_this':''}}">内容相关</text>
+    </view>
+    <view class="tab_item" data-id="2" bindtap="tab">
+        <text class="{{currentId == 2?'tab_this':''}}">会员相关</text>
+    </view>
+    <view class="tab_item" data-id="3" bindtap="tab">
+        <text class="{{currentId == 3?'tab_this':''}}">游戏内容</text>
+    </view>
+</view>
+<view class="content_box w710">
+      <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail">
+          <view class="product_box flexRowBetween">
+              <view class="product_left">
+                  <image src="/images/product.png"></image>
+              </view>
+              <view class="product_right flexRowBetween">
+                  <view class="product_detail">
+                      <view class="flexRowBetween" style="height:40%;">
+                        <view class="font28 avoidOverflow flex" style="width:50%;">
+                          标题标题标题标题标题标题
+                        </view>
+                        <view class="font28" style="width:40%;text-align: right;">2018-9-9</view>
+                      </view>
+                      <view class="font32  flex" style="height:60%;overflow: hidden;">
+                        地址地址的地址地址的地址地址的地址地址的
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+       <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail">
+          <view class="product_box flexRowBetween">
+              <view class="product_left">
+                  <image src="/images/product.png"></image>
+              </view>
+              <view class="product_right flexRowBetween">
+                  <view class="product_detail">
+                      <view class="flexRowBetween" style="height:40%;">
+                        <view class="font28 avoidOverflow flex" style="width:50%;">
+                          标题标题标题标题标题标题
+                        </view>
+                        <view class="font28" style="width:40%;text-align: right;">2018-9-9</view>
+                      </view>
+                      <view class="font32  flex" style="height:60%;overflow: hidden;">
+                        地址地址的地址地址的地址地址的地址地址的
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </view>
+</view>

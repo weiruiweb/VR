@@ -1,0 +1,39 @@
+/**index.wxss**/
+
+@import "../../wxParse/wxParse.wxss"
+view{
+	color:#ccc;
+}
+page{
+	width:100%;
+	min-height:100%;
+	background:#333;
+}
+
+.user_infor{
+	height:78rpx;
+	line-height:78rpx;
+	border-bottom:solid 1px #dcdcdc;
+	align-items:center;
+	}
+.user_right {
+	width:40%;
+	height: 100%;
+}
+.user_all{
+	margin-top:12rpx;
+}
+.account_left{
+	width:50%;
+}
+.account_right{
+	text-align: right;
+	width:50%;
+}
+.account_img{
+	width:116rpx;
+	height:116rpx;
+	border-radius:50%;
+	overflow:hidden;
+	float: right;
+}

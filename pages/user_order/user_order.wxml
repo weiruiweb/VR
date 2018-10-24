@@ -1,0 +1,35 @@
+<!--index3.wxml-->
+<view class="tab font30 flexRowBetween">
+    <view class="tab_item " data-id="0" bindtap="tab">
+        <text class="{{currentId == 0?'tab_this':''}}">待体验</text>
+    </view>
+    <view class="tab_item " data-id="1" bindtap="tab">
+        <text class="{{currentId == 1?'tab_this':''}}">已体验</text>
+    </view>
+    <view class="tab_item" data-id="2" bindtap="tab">
+        <text class="{{currentId == 2?'tab_this':''}}">已取消</text>
+    </view>
+</view>
+<view class="product">
+    <view class="order_tlt w710 flexRowBetween ">
+        <view class="tlt_left font24">交易时间：2018-9-9</view>
+        <view class="tlt_left tlt_right color2 font24">待体验</view>
+    </view>
+    <view class="product_box w710 flexRowBetween">
+        <view class="product_left">
+            <image src="/images/product.png"></image>
+        </view>
+        <view class="product_right">
+            <view class="product_detail">
+                <view class="font32  product_top flex">
+                    <view class="product_name">空间+导示</view><view class="product_price color2">¥189</view></view>
+                <view class="font28 avoidOverflow product_address flex">地址地址</view>
+                <view class="font28 flex"><text>2018-9-9</text><text>15:56:00</text></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="w710">
+    <view class="font24 note">注：在预约时间前某段时间（例如1小时前）内取消预约可全部退 款，超过1小时不退费</view>
+    <view class="cancel font28">取消预约</view>
+</view>

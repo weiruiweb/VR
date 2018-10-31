@@ -5,7 +5,7 @@ const app = getApp();
 
 Page({
   data: {
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png)'
+    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
   //事件处理函数
  

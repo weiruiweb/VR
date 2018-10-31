@@ -213,7 +213,7 @@ page{
 	margin:0 auto;
 }
 .nav_img{
-	width:48rpx;
-	height:48rpx;
+	width:24px;
+	height:24px;
 	margin:0 auto;
 }

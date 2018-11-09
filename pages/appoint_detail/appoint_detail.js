@@ -257,9 +257,6 @@ Page({
  
     const callback = (res)=>{
       if(res.solely_code==100000){
-        setTimeout(function(){
-          api.pathTo('/pages/user_order/user_order','redi');
-        },800)
         if(res.info){
           const payCallback=(payData)=>{
           if(payData==1){

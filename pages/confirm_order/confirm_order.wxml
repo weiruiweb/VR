@@ -1,30 +1,35 @@
 <!--index3.wxml-->
 <view class="w710">
     <view style="background:#262626;border-radius: 20rpx;margin-top: 20rpx;padding-top: 1rpx;">
-
-        <view class="manage w710 flex">
-            <view class="manage_cont">
-                <view class="user_address flex color3">
-                    <view class="address_left flex">
-                        <view style="width:15px;height:14px;{{img}};background-position:-252px 0px;margin-right:10rpx;"></view>
-                        {{web_addressData.name}}
-                    </view>
-                    <view class="address_right">
-                        {{web_addressData.phone}}
-                    </view>
+    <view class="manage w710 flex" wx:if="{{web_addressData.name}}" bindtap="intoPath" data-path="/pages/user_address/user_address">
+        <view class="manage_cont">
+            <view class="user_address flex color3">
+                <view class="address_left flex">
+                    <view style="width:15px;height:14px;{{img}};background-position:-252px 0px;margin-right:10rpx;"></view>
+                    {{web_addressData.name}}
                 </view>
-                <view class="address_infor flex">
-                    <view class="infor_left flex">
-                        <view style="width:15px;height:14px;{{img}};background-position:-144px 0px;margin-right:10rpx;"></view>
-                    </view>
-                    <view class="infor_right avoidOverflow">{{web_addressData.province+web_addressData.city+web_addressData.country+web_addressData.detail}}</view>
-                    <view style="width:6%;" bindtap="intoPath" data-path="/pages/user_address/user_address">
-                        <view style="width:9px;height:15px;{{img}};background-position:-40px 0px;"></view>
-                    </view>
+                <view class="address_right">
+                    {{web_addressData.phone}}
+                </view>
+            </view>
+            <view class="address_infor flex">
+                <view class="infor_left flex">
+                    <view style="width:15px;height:14px;{{img}};background-position:-144px 0px;margin-right:10rpx;"></view>
+                </view>
+                <view class="infor_right avoidOverflow">{{web_addressData.province+web_addressData.city+web_addressData.country+web_addressData.detail}}</view>
+                <view style="width:6%;" bindtap="intoPath" data-path="/pages/user_address/user_address">
+                    <view style="width:9px;height:15px;{{img}};background-position:-40px 0px;"></view>
                 </view>
             </view>
         </view>
-
+    </view>
+    <view class="manage w710 flex" wx:else  bindtap="intoPath" data-path="/pages/user_address/user_address">
+        <view class="order_user"  style="{{fonts[5].font}}">
+            <view class="order_left">
+                请选择收货地址
+            </view>
+        </view>
+    </view>
 
         <view class="product">
             <view class="product_box w710 flexRowBetween">

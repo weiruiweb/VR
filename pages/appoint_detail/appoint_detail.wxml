@@ -44,13 +44,27 @@
     </view>
 
     <view>可用会员卡</view>
+  <!--   <block wx:for="{{web_cardData}}" wx:key="id">
+    <view bindtap="chooseCard" data-index="{{index}}" style="{{web_index==index?'color:red':''}}">
+      名称:{{item.products[0].snap_product.title}}  剩余积分 :{{item.balance}} 折扣:{{item.discount/10}}折
+  
+    </view> -->
+    
     <block wx:for="{{web_cardData}}" wx:key="id">
-      <view bindtap="chooseCard" data-index="{{index}}" style="{{web_index==index?'color:red':''}}">
-        名称:{{item.products[0].snap_product.title}}  剩余积分 :{{item.balance}} 折扣:{{item.discount/10}}折
-
+      <view class="member" bindtap="chooseCard" data-index="{{index}}">
+          <image src="{{web_index==index?'/images/member_bg.png':'/images/member_bg1.jpg'}}"></image>
+          <view class="member_cont w710">
+              <view class="member_type flex">
+                  <view class="type_left">{{item.products[0].snap_product.title}}</view>
+                  <view class="type_left type_right color2">剩余积分：{{item.balance}}</view>
+              </view>
+              <view class="member_detail font28 flex">
+                <view class="color2 discount_num">{{item.discount/10}}</view>
+                <view class="text2">折</view>
+            </view>
+          </view>
       </view>
     </block>
-
 </view>
 <view class="confirm_btn flex font30">
    <view class="confirm_left color2">合计: ¥{{web_mainData.price*web_ratio}}</view> 

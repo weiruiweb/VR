@@ -104,3 +104,48 @@ page{
 .product_date{
 	width:40%;
 }
+.member{
+	width:100%;
+	height:292rpx;
+	position: relative;
+	margin:20rpx 0;
+}
+.member image{
+	width:100%;
+	height:100%;
+}
+.member_cont{
+	height:292rpx;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+.member_type{
+	width:100%;
+	height: 100rpx;
+}
+.type_left{
+	width:50%;
+	font-size:34rpx;
+}
+.type_right{
+	text-align: right;
+}
+.member_detail{
+	height:52%;
+	padding:2% 0;
+	overflow:hidden;
+}
+.date text{
+	margin-right: 20rpx;
+}
+.member image{
+	border-radius:10rpx;
+}
+.member_detail .discount_num{
+	text-align:center;
+	font-size:100rpx;
+}
+.member_detail .text2{
+	
+}

@@ -80,6 +80,7 @@ Page({
 
   addOrder(){
     const self = this;
+    
    if(!self.data.order_id){
       self.setData({
         buttonClicked: true
@@ -93,6 +94,10 @@ Page({
         snap_address:self.data.addressData,
         type:1
       };
+      if(postData.snap_address.length==0){
+          api.showToast('请选择收货地址','none');
+         
+        }
       const callback = (res)=>{
         if(res&&res.solely_code==100000){
           setTimeout(function(){

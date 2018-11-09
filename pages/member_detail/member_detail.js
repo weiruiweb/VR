@@ -102,17 +102,16 @@ Page({
       searchItem:{
         id:order_id,
       },
-      score:self.data.mainData.price,
-     /* wxPayStatus:0*/
+      wxPay:self.data.mainData.price,
+      wxPayStatus:0
     };
     const callback = (res)=>{
       wx.hideLoading();
       if(res.solely_code==100000){
-        api.showToast('支付成功','none')
         const payCallback=(payData)=>{
           if(payData==1){
             setTimeout(function(){
-              api.pathTo('/pages/user_order/user_order','redi');
+              api.pathTo('/pages/user_member/user_member','redi');
             },800)  
           };   
         };

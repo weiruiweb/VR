@@ -52,11 +52,11 @@
                   </view>
                   <view class="product_right flexRowBetween">
                       <view class="product_detail">
-                          <view class="font28 flexRowBetween" style="height:40%">
+                          <view class="font32 flexRowBetween" style="height:40%">
                               <view class="product_name avoidOverflow color1">{{item.title}}</view>
                               <view class="font24 product_date">{{item.create_time}}</view>
                           </view>
-                          <view class="font32 avoidOverflow" style="height:60%;">{{item.description}}</view>
+                          <view class="font28 avoidOverflow" style="height:60%;">{{item.description}}</view>
                           
                       </view>
                   </view>
@@ -105,7 +105,7 @@
             </view>
             
         </view>
-        <view class="flexRowBetween" style="flex-wrap: wrap">
+        <view class="flexRowBetween w710" style="flex-wrap: wrap">
           <block wx:for="{{web_scoreData}}" wx:key="id">
             <view class="recommend_left" bindtap="intoPath" data-path="/pages/index_detail/index_detail?id={{item.id}}">
                 <image src="{{item.mainImg[0].url}}"></image>

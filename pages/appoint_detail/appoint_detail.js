@@ -14,8 +14,8 @@ Page({
     index:-1,
     useCard:false,
     pay:{}
-  },
 
+  },
   onLoad: function (options) {
     const self = this;
     console.log(options);
@@ -29,12 +29,7 @@ Page({
     self.data.labelId = options.labelId
     self.data.id = options.id;
     self.getMainData();
-
   },
-
-
-
-
 
   getMainData(){
     const self = this;
@@ -118,7 +113,6 @@ Page({
   chooseCard(e){
     const self = this;
     var index = api.getDataSet(e,'index');
-    
     if(index==self.data.index){
       self.data.index = -1;
     }else{
@@ -129,34 +123,11 @@ Page({
     self.countPrice();      
     
     self.setData({
-      web_index:self.data.index
+      web_index:self.data.index,
     }) 
   },
 
-  test(){
-    const self = this;
-    console.log('pay');
 
-
-    const postData = {
-      token:wx.getStorageSync('token'),
-      wxPay:0.01,
-    };
-    const callback = (res)=>{
-      console.log(res);
-      if(res.solely_code==100000){
-         const payCallback=(payData)=>{
-          if(payData==1){
-            console.log('ok')
-          };   
-        };
-        api.realPay(res.info,payCallback);   
-      }else{
-        api.showToast('支付失败','none')
-      }
-    };
-    api.directPay(postData,callback);   
-  },
 
   
 

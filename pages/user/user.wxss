@@ -72,3 +72,6 @@ view{
 	height:36rpx;
 	margin-right:10rpx;
 }
+.navbar .this-text{
+	color:#3ab3c3;
+}

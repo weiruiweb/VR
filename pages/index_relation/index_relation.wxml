@@ -15,7 +15,7 @@
 
 <view class="content_box w710">
   <block wx:for="{{web_mainData}}" wx:key="id">
-    <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail">
+    <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail?id={{item.id}}">
         <view class="product_box flexRowBetween">
             <view class="product_left">
                 <image src="/images/product.png"></image>

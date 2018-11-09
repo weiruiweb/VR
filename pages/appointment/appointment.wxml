@@ -13,13 +13,13 @@
                     </view>
                     <view class="store_list flex">
                         <view class="stroe_icon">
-                            <view style="width:17px;height:15px;{{img}};background-position: -21px 0;margin:0 auto;"></view>
+                            <view style="width:12px;height:15px;{{img}};background-position: -22px 0;margin:0 auto;"></view>
                         </view>
                         <view class="stroe_text font30 avoidOverflow">{{web_labelData.description}}</view>
                     </view>
                 </view>
                 <view class="store_right" bindtap="intoPath" data-path="/pages/search/search">
-                    <view style="width:17px;height:15px;{{img}};background-position:-92px -100px;margin:0 auto;"></view>
+                    <view style="width:30px;height:30px;{{img}};background-position:-92px -100px;margin:0 auto;"></view>
                     <view class="font28">切换店铺</view>
                 </view>
             </view>
@@ -46,8 +46,3 @@
         <view class="select_one" bindtap="mySelect" data-id="{{item.id}}">{{item.title}}</view>
     </block>
 </view>
-
-
-
-
-

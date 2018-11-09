@@ -200,7 +200,7 @@ line-height:62rpx;}
 	flex-wrap: wrap;
 }
 .time_right .time1{
-	width:28%;
+	width:33%;
 	height:56rpx;
 	border:solid 1px #3ab3c3;
 	margin-right:3%;

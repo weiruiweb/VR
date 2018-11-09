@@ -6,7 +6,7 @@
 <view class="detail w710">
 	<view class="product_top">
 		<view class="price_sale">
-			<view class="product_name avoidOverflow">
+			<view class="product_name avoidOverflow color1">
 				网站开发高端定制网站开发高端定制网站开发高端定制网站开发高端定制网站开发高
 			</view>
 			<view class="font28 flexRowBetween">

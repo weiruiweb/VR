@@ -17,7 +17,6 @@ Page({
       detail:'',
     },
     id:'',
-    img:'background:url(/images/vr.png)'
   },
 
   onLoad(options) {
@@ -27,7 +26,7 @@ Page({
       token.getUserInfo();
     };
     self.setData({
-      fonts:app.globalData.font
+      img:app.globalData.img
     });
     if(options.id){
       self.data.id = options.id

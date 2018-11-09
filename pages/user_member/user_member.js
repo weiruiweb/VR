@@ -6,7 +6,6 @@ const token = new Token();
 
 Page({
   data: {
-    img:'background:url(/images/vr.png)',
     mainData:[],
     searchItem:{
       type:3,
@@ -17,7 +16,10 @@ Page({
   onLoad:function(e) {
     const self  = this;
     self.data.paginate = getApp().globalData.paginate;
-    self.getMainData()
+    self.getMainData();
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
   getMainData(isNew){

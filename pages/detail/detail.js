@@ -22,7 +22,6 @@ Page({
     id:'',
     isShow:false,
     isChoose:0,
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);',
     web_skuLabel:{},
     selectData:'',
     skuToday:[],
@@ -32,13 +31,11 @@ Page({
  
   onLoad(options) {
     const self = this;
-    
     self.data.id = options.id;
     self.getMainData();
     self.setData({
       web_selectData:new Date(new Date().toLocaleDateString()).getTime(),
-
-      fonts:app.globalData.font
+      img:app.globalData.img
     });
   },
 

@@ -8,7 +8,6 @@ Page({
   data: {
     isLoadAll:false,
     mainData:[],
-    img:'background:url(/images/vr.png)',
     searchItem:{
       thirdapp_id:getApp().globalData.thirdapp_id,
       type:2
@@ -19,7 +18,10 @@ Page({
     const self = this;
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
-    self.getartData()
+    self.getartData();
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
 

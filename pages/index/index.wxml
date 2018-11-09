@@ -12,7 +12,7 @@
     </view>
 </view>
 <view class="search flex font28">
-    <input placeholder="请输入店名查询" bindinput="inputChange"  data-key="item"></input>
+    <input placeholder="请输入店名查询" bindinput="inputChange" class="color1"  data-key="item"></input>
     <view class="search_btn flex" bindtap="intoPath" data-path="/pages/search/search?item={{web_sForm.item}}">
       <view style="{{img}};background-position: -188px -60px;width:21px;height:21px;" ></view>
     </view>
@@ -28,7 +28,7 @@
         <view class="coach_item" bindtap="intoPath" data-path="/pages/appointment/appointment?id={{item.id}}">
             <view class="coach_img">
                 <image src="{{item.mainImg[0].url}}"></image>
-                <view class="font30 avoidOverflow">{{item.title}}</view>
+                <view class="font30 avoidOverflow color1">{{item.title}}</view>
                <view class="font24 avoidOverflow">{{item.description}}</view>
             </view>
         </view>
@@ -109,7 +109,7 @@
           <block wx:for="{{web_scoreData}}" wx:key="id">
             <view class="recommend_left" bindtap="intoPath" data-path="/pages/index_detail/index_detail?id={{item.id}}">
                 <image src="{{item.mainImg[0].url}}"></image>
-                <view class="product_name1 font30 avoidOverflow">{{item.title}}</view>
+                <view class="product_name1 font30 avoidOverflow color_this">{{item.title}}</view>
                 <view class="product_pro font28"><text class="color">¥{{item.price}}</text>积分</view>
             </view>
           </block>
@@ -117,14 +117,14 @@
     </view>
 </view>
 
-<view style="width:100%;height:110rpx;"></view>
+<view style="width:100%;height:160rpx;"></view>
 <view class="navbar">
     <view class="navbar_item" >
         <view class="nav_img" style="{{img}};background-position:-29px -60px;"></view>
         <view class="text this-text">首页</view>
     </view>
     <view class="navbar_item"   bindtap="intoPath" data-path="/pages/appointment/appointment?id={{web_labelData[0].id}}">
-        <view class="nav_img" style="{{img}};background-position:-58px -60px;"></view>
+        <view class="nav_img" style="{{img}};background-position:-56px -60px;"></view>
         <view class="text">预约</view>
     </view>
     <view class="navbar_item"   bindtap="intoPathRedirect" data-path="/pages/user/user">

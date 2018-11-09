@@ -14,14 +14,12 @@ Page({
   data: {
     labelData:[],
     mainData:[],
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
-    
-
-
   onLoad(){
     const self = this;
-
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
   onShow(){

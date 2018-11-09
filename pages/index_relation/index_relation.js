@@ -15,13 +15,15 @@ Page({
     searchItem:{
       menu_id:''
     },
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
     
   onLoad(){
     const self = this;
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
-    self.getLabelData()
+    self.getLabelData();
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
   getMainData(isNew){

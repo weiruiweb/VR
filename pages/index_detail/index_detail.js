@@ -20,14 +20,13 @@ Page({
     id:'',
     isShow:true,
     isChoose:0,
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
   //事件处理函数
  
   onLoad(options) {
     const self = this;
     this.setData({
-      fonts:app.globalData.font
+      img:app.globalData.img
     });
     self.data.id = options.id;
     self.getMainData();

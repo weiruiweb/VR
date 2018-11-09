@@ -5,6 +5,7 @@ view{
 page{
 	width:100%;
 	min-height:100%;
+	background:#333;
 } 
 .flexRowBetween{
 	display:flex;
@@ -55,6 +56,9 @@ page{
 .font32{
 	font-size:32rpx;
 }
+.color_this{
+	color:#e5e5e5;
+}
 .color{
 	color:#226098;
 }
@@ -86,12 +90,11 @@ page{
 	position:fixed;
 	bottom:0rpx;
 	z-index:999;
-	background:#fff;
+	background:#222;
 	display:flex;
 	justify-content:center;
-	border-top:solid 1px #dbdbdb;
 	align-items:center;
-	box-shadow:5rpx 0 15rpx #84ddf3;
+	box-shadow:5rpx 0 15rpx #9f9e9e;
 }
 .nav_img image{
 	width:46rpx;

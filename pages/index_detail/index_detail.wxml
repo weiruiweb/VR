@@ -6,7 +6,7 @@
 <view class="detail w710">
 	<view class="product_top">
 		<view class="price_sale">
-			<view class="product_name avoidOverflow">
+			<view class="product_name avoidOverflow color1">
 				{{web_mainData.title}}
 			</view>
 			<view class="font28">

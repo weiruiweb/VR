@@ -16,18 +16,17 @@ Page({
 
     },
   },
-
-
   onLoad(options){
     const self = this;
     if(!wx.getStorageSync('token')){
       var token = new Token();
       token.getUserInfo();
     };
-   
-
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
-    self.getMainData()
+    self.getMainData();
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
 

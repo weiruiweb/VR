@@ -11,7 +11,6 @@ Page({
     cardData:[],
     buttonClicked: false,
     order_id:'',
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);',
     index:-1,
     useCard:false,
     pay:{}
@@ -23,7 +22,7 @@ Page({
     self.setData({
       web_passage1:options.passage1,
       web_storeName:options.storeName,
-      fonts:app.globalData.font,
+      img:app.globalData.img,
       web_ratio:1
     });
     self.data.passage1 = options.passage1;

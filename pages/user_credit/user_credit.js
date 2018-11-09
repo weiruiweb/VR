@@ -16,7 +16,6 @@ Page({
       status:1
     },
     complete_api:[],
-    img:'background:url(/images/vr.png)'
   },
 
   
@@ -24,7 +23,7 @@ Page({
     const self = this;
     wx.showLoading();
     self.setData({
-     fonts:app.globalData.font
+     img:app.globalData.img
     });
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();

@@ -13,7 +13,7 @@
 				￥{{web_mainData.price}}元
 			</view>
 		</view>
-		<view class="product_name avoidOverflow">
+		<view class="product_name avoidOverflow color1">
 			{{web_mainData.title}}
 		</view>
 		<view class="font26 avoidOverflow">

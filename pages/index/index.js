@@ -19,11 +19,9 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
     swiperIndex:0,
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);',
     sForm:{
       item:'' 
     }
-    
   },
   //事件处理函数
  
@@ -32,17 +30,17 @@ Page({
     self.getSliderData();
     self.getLabelData();
     self.getProductData();
-    self.getScoreData()
+    self.getScoreData();
+    self.setData({
+      img:app.globalData.img,
+    })
   },
-
   swiperChange(e) {
     const self = this;
     self.setData({
       swiperIndex: e.detail.current,
     })
   },
-
-
   getSliderData(){
     const self = this;
     const postData = {};

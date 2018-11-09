@@ -14,13 +14,12 @@ Page({
     },
     buttonClicked: false,
     order_id:'',
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
 
   onLoad: function (options) {
     const self = this;
      this.setData({
-        fonts:app.globalData.font
+        img:app.globalData.img
       });
     self.data.id = options.id;
     self.getMainData();

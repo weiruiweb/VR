@@ -11,10 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
     mainData:[],
     isLoadAll:false,
-    img:'background:url(/images/vr.png)'
   },
 
   onLoad(){
@@ -25,7 +23,7 @@ Page({
       token.getUserInfo();
     };
     self.setData({
-      fonts:app.globalData.font
+      img:app.globalData.img
     });
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
   },

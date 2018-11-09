@@ -33,7 +33,7 @@
                 </view>
                 <view class="product_right flex">
                     <view class="product_detail">
-                        <view class="font32 product_top">{{web_mainData.title}}</view>
+                        <view class="font32  color1">{{web_mainData.title}}</view>
                         <view class="font24 product_top">{{web_mainData.description}}</view>
                     </view>
                 </view>

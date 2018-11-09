@@ -9,12 +9,11 @@ Page({
   tabCurrent:0,
   isShow:false,
   chooseType:0,
-  img:'background:url(/images/vr.png)'
   },
   
   onLoad: function () {
    this.setData({
-      fonts:app.globalData.font
+      img:app.globalData.img
     })
   },
   goBuy:function(){

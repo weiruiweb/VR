@@ -58,9 +58,12 @@ page{
 .product_name1{
 	height:66rpx;
 	line-height: 66rpx;
+	padding:0 5%;
+	width:90%;
 }
 .product_pro{
-
+	padding:0 5%;
+	width:90%;
 }
 
 .select_box {

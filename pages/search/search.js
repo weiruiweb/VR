@@ -6,7 +6,6 @@ const token = new Token();
 
 Page({
   data: {
-    img:'background:url(/images/vr.png)',
     sForm:{
       item:''
     },
@@ -32,6 +31,9 @@ Page({
       })
     };
     self.getLabelData();
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
   getLabelData(isNew){

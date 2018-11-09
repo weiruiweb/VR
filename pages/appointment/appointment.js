@@ -8,7 +8,6 @@ Page({
   data: {
     storeData:[],
     mainData:[],
-    img:'background-image:url(http://www.solelycloud.com/images/vr.png)',
     complete_api:[],
     select:false
   },
@@ -23,6 +22,9 @@ Page({
     self.getLabelData();
     self.getMainData();
     self.getStoreData()
+    self.setData({
+      img:app.globalData.img
+    })
   },
 
   getStoreData(){

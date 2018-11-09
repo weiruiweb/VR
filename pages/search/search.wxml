@@ -1,43 +1,28 @@
 <!--index.wxml-->
 <view class="search flex font28">
-    <input placeholder="请输入店名查询"></input>
-    <view class="search_btn flex">
+    <input placeholder="请输入店名查询" bindconfirm="changeBind" data-key="item" value="{{web_sForm.item}}"></input>
+    <view class="search_btn flex" >
       <view style="{{img}};background-position: -188px -60px;width:21px;height:21px;" ></view>
     </view>
 </view>
 <view class="content_box w710">
-      <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/appointment/appointment">
+  <block wx:for="{{web_labelData}}" wx:key="id">
+      <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/appointment/appointment?id={{item.id}}">
           <view class="product_box flexRowBetween">
               <view class="product_left">
-                  <image src="/images/product.png"></image>
+                  <image src="{{item.mainImg[0].url}}"></image>
               </view>
               <view class="product_right flexRowBetween">
                   <view class="product_detail">
                       <view class="font28 avoidOverflow flex" style="height:50%">
-                        标题标题标题标题标题标题
+                        {{item.title}}
                       </view>
                       <view class="font32  flex avoidOverflow" style="height:50%;overflow: hidden;">
-                        地址地址的地址地址的地址地址的地址地址的
+                        {{item.description}}
                       </view>
                   </view>
               </view>
           </view>
       </view>
-       <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/appointment/appointment">
-          <view class="product_box flexRowBetween">
-              <view class="product_left">
-                  <image src="/images/product.png"></image>
-              </view>
-              <view class="product_right flexRowBetween">
-                  <view class="product_detail">
-                      <view class="font28 avoidOverflow flex" style="height:50%">
-                        标题标题标题标题标题标题
-                      </view>
-                      <view class="font32 avoidOverflow flex" style="height:50%;overflow: hidden;">
-                        地址地址的地址地址的地址地址的地址地址的地址地址的地址地址的地址地址的地址地址的
-                      </view>
-                  </view>
-              </view>
-          </view>
-      </view>
+    </block>
 </view>

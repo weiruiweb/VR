@@ -4,30 +4,57 @@ const app = getApp();
 import {Token} from '../../utils/token.js';
 const token = new Token();
 
+
+
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    img:'background:url(/images/vr.png)'
+    labelData:[],
+    mainData:[],
+    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
-  //事件处理函数
-  preventTouchMove:function(e) {
+    
+
+
+  onLoad(){
+    const self = this;
 
   },
-  intoPath(e){
+
+  onShow(){
     const self = this;
-    api.pathTo(api.getDataSet(e,'path'),'nav');
+    self.userGet();
+
   },
 
-  intoPathRedi(e){
+
+  userGet(){
     const self = this;
-    wx.navigateBack({
-      delta:1
-    })
+    const postData = {};
+    postData.token = wx.getStorageSync('token');
+    const callback = (res)=>{
+      if(res.info.data.length>0){
+        self.data.mainData = res.info.data[0];
+      }   
+      self.setData({
+        web_mainData:self.data.mainData
+      });
+      console.log(self.data.mainData)
+      wx.hideLoading();
+    };
+    api.userGet(postData,callback);
   },
 
-  intoPathRedirect(e){
-    const self = this;
-    api.pathTo(api.getDataSet(e,'path'),'redi');
-  }, 
+
+
+ 
+
+
+
+ 
 })
 
   

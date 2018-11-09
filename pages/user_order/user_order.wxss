@@ -78,7 +78,7 @@ view{
 	border-bottom:solid 1px #3c3c3c;
 }
 .tlt_left{
-	width:50%;
+	width:60%;
 	overflow:hidden;
 }
 .tlt_right{

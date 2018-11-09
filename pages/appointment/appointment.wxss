@@ -60,5 +60,27 @@ page{
 	line-height: 66rpx;
 }
 .product_pro{
-	text-align: center;
+
 }
+
+.select_box {
+    background-color: #f2f2f2;
+    padding: 0 10rpx;
+    width: 60%;
+    position: absolute;
+    top: 300rpx;
+    left:200rpx;
+    z-index: 1;
+    overflow: hidden;
+    animation: myfirst 0.5s;
+}
+ 
+
+ 
+.select_one {
+    height: 60rpx;
+    color:red;
+    line-height: 60rpx;
+    border-bottom: 1px solid #ccc;
+
+  }

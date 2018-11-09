@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.2",
-	"appid": "wx212611f012b9cf1d",
+	"appid": "wxad11daecfd18e769",
 	"projectname": "VR",
 	"isGameTourist": false,
 	"condition": {
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -80,7 +80,19 @@
 				{
 					"id": -1,
 					"name": "首页",
-					"pathName": "pages/index/index"
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "111",
+					"pathName": "pages/appointment/appointment",
+					"query": "id=106"
+				},
+				{
+					"id": -1,
+					"name": "我的卡",
+					"pathName": "pages/user_member/user_member"
 				}
 			]
 		}

@@ -3,23 +3,20 @@
 <view class="user_all font30 color3 w710">
     <view class="w710">
        <view class="user_infor flex" style="height:160rpx;">
-            <view class="account_left">微信名</view>
+            <view class="account_left">头像</view>
             <view class="account_right">
                 <view class="account_img"><open-data type="userAvatarUrl"></open-data></view>
             </view>
         </view>
         <view class="user_infor flex">
             <view class="account_left">微信名</view>
-            <view class="account_left account_right">葳蕤</view>
+            <view class="account_left account_right"><open-data  type="userNickName" ></open-data></view>
         </view>
         <view class="user_infor flex">
             <view class="account_left">用户类型</view>
-            <view class="account_left account_right">葳蕤</view>
+            <view class="account_left account_right">普通会员</view>
         </view>
-        <view class="user_infor flex">
-            <view class="account_left">余额</view>
-            <view class="account_left account_right">265</view>
-        </view>
+      
     </view>
 </view>
 

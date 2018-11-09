@@ -12,7 +12,7 @@ class Base{
     //http 请求类, 当noRefech为true时，不做未授权重试机制
     request(params) {
         var that = this;
-        var baseRestUrl = 'https://liubin.yisuiyanghuoguo.com/liubin/public/index.php/api/v1/';
+        var baseRestUrl = 'https://sywskxcx.futuretoday.top/api/public/index.php/api/v1/';
         var url=baseRestUrl + params.url;
         
         
@@ -146,6 +146,17 @@ class Base{
             length++ 
         };
         return length;
+    };
+
+    
+    checkArrayEqual(array1,array2){
+        
+        if(array1.sort().toString() == array2.sort().toString()){
+            return true;
+        }else{
+            return false;
+        }
+        
     };
 
     jsonToArray(obj,type) {
@@ -461,11 +472,22 @@ class Base{
         mydata=mydata.replace('-', '/'); 
         return new Date(mydata)/1000;
         
-    }
+    };
+
+    timestampToTime(timestamp) {
+            var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            var D = date.getDate() + ' ';
+            var h = date.getHours() + ':';
+            var m = date.getMinutes() + ':';
+            var s = date.getSeconds();
+            return Y+M+D+h+m+s;
+        }
 
 
 
-};
+    };
 
 
 

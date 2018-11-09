@@ -1,31 +1,31 @@
 <!--index1.wxml-->
-
+<wxs module="func" src="../../utils/func.wxs" />
 <view class="user_all font30 color3 w710">
     <view class="w710 bg">
         <view class="user_infor flex">
             <view class="account_left">门店名称</view>
-            <view class="account_left account_right">葳蕤</view>
+            <view class="account_left account_right">全门店通用</view>
         </view>
         <view class="user_infor flex">
             <view class="account_left">会员卡</view>
-            <view class="account_left account_right">葳蕤</view>
+            <view class="account_left account_right">{{web_mainData.title}}</view>
         </view>
         <view class="user_infor flex">
             <view class="account_left">有效期</view>
-            <view class="account_left account_right">2019-9-9 到 2020-9-9</view>
+            <view class="account_left account_right">{{func.SecondToDate(web_mainData.standard)}}</view>
         </view>
         <view class="user_infor flex">
             <view class="account_left">会员卡价格</view>
-            <view class="account_left account_right">¥456</view>
+            <view class="account_left account_right">¥{{web_mainData.price}}</view>
         </view>
         <view class="user_infor" style="height: 120rpx; text-align:right;border: none;">
-            实付款 <text class="color2">¥4144</text>
+            实付款 <text class="color2">¥{{web_mainData.price}}</text>
         </view>
     </view>
 </view>
 <view class="confirm_btn flex font30">
-   <view class="confirm_left color2">合计: ¥1899</view> 
-   <view class="confirm_right color1 bg1">提交订单</view> 
+   <view class="confirm_left color2">合计: ¥{{web_mainData.price}}</view> 
+   <view class="confirm_right color1 bg1" bindtap="addOrder">提交订单</view> 
 </view>
 
 

@@ -1,19 +1,24 @@
 <!--index1.wxml-->
-<view class="w710">
-    <view class="member">
-        <image src="/images/member_bg.png"></image>
-        <view class="member_cont w710">
-            <view class="member_type flex">
-                <view class="type_left">金卡</view>
-                <view class="type_left type_right color2">¥2000</view>
-            </view>
-            <view class="member_detail font28">内内容内容内容内容内容内容内容内容内容内容容内内容内容内容内容内容内容内容容</view>
-            <view class="date font26">
-                <text>有效期</text><text>2018-9-9</text><text>2018-9-9</text>
+<wxs module="func" src="../../utils/func.wxs" />
+<block wx:for="{{web_mainData}}" wx:key="id">
+    <view class="w710" wx:if="{{item}}">
+        <view class="member">
+            <image src="/images/member_bg.png"></image>
+            <view class="member_cont w710">
+                <view class="member_type flex">
+                    <view class="type_left">{{item.products[0].snap_product.title}}</view>
+                    <view class="type_left type_right color2">余额：{{item.balance}}</view>
+                </view>
+                <view class="member_detail font28">{{item.products[0].snap_product.description}}</view>
+                <view class="date font26">
+                    <text>有效期至</text><text>{{func.timestampToTime(item.standard)}}</text>
+                </view>
             </view>
         </view>
     </view>
-</view>
+    <view class="w710" wx:else>您还没有购买会员卡~</view>
+</block>
+
 <view class="user_all font30 color3 w710">
     <view class="w710 bg">
         <view class="user_infor flex"  bindtap="intoPath" data-path="/pages/member/member">

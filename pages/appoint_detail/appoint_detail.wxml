@@ -1,5 +1,5 @@
 <!--index1.wxml-->
-
+<wxs module="func" src="../../utils/func.wxs" />
 <view class="user_all font30 color3 w710">
     <view class="w710 bg">
         <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/appointment/appointment">
@@ -10,42 +10,51 @@
               <view class="product_right flexRowBetween">
                   <view class="product_detail">
                       <view class="font32 avoidOverflow flex" style="height:50%">
-                        标题标题标题标题标题标题
+                        {{web_mainData.product.title}}
                       </view>
                       <view class="font28  flex avoidOverflow" style="height:50%;overflow: hidden;">
-                        商品属性
+                        {{web_mainData.product.description}}
                       </view>
                   </view>
               </view>
               <view class="product_last font28 color2">
-                  ¥456
+                  ¥{{web_mainData.price}}
               </view>
           </view>
       </view>
         <view class="user_infor flex">
             <view class="account_left avoidOverflow">门店名称</view>
-            <view class="account_left account_right avoidOverflow">葳蕤</view>
+            <view class="account_left account_right avoidOverflow">{{web_storeName}}</view>
         </view>
         <view class="user_infor flex">
             <view class="account_left avoidOverflow">项目名称</view>
-            <view class="account_left account_right avoidOverflow">葳蕤</view>
+            <view class="account_left account_right avoidOverflow">{{web_mainData.product.title}}</view>
         </view>
         <view class="user_infor flex">
             <view class="account_left avoidOverflow" style="width:25%;">预约时间</view>
-            <view class="account_left account_right" style="width:75%;">09月28日  星期三  19:00 — 21:00</view>
+            <view class="account_left account_right" style="width:75%;">{{func.timestampToTime(web_passage1)}}   {{web_labelData.title}}</view>
         </view>
-        <view class="user_infor flex">
+        <view class="user_infor flex" bindtap="test">
             <view class="account_left">预约价格</view>
-            <view class="account_left account_right">¥456</view>
+            <view class="account_left account_right">¥{{web_mainData.price}}</view>
         </view>
         <view class="user_infor" style="height: 120rpx; text-align:right;border: none;">
-            实付款 <text class="color2">¥4144</text>
+            实付款 <text class="color2">¥{{web_mainData.price*web_ratio}}</text>
         </view>
     </view>
+
+    <view>可用会员卡</view>
+    <block wx:for="{{web_cardData}}" wx:key="id">
+      <view bindtap="chooseCard" data-index="{{index}}" style="{{web_index==index?'color:red':''}}">
+        名称:{{item.products[0].snap_product.title}}  剩余积分 :{{item.balance}} 折扣:{{item.discount/10}}折
+
+      </view>
+    </block>
+
 </view>
 <view class="confirm_btn flex font30">
-   <view class="confirm_left color2">合计: ¥1899</view> 
-   <view class="confirm_right color1 bg1">提交订单</view> 
+   <view class="confirm_left color2">合计: ¥{{web_mainData.price*web_ratio}}</view> 
+   <view class="confirm_right color1 bg1" bindtap="{{!buttonClicked?'addOrder':''}}">提交订单</view> 
 </view>
 
 

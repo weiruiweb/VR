@@ -34,7 +34,7 @@
 			<view class="font28">分享</view>
 		</view>
 		<view class="go_buy flexRowBetween" >
-			<view class="go_pay bg" bindtap="intoPath" data-path="/pages/appointment_detail/appointment_detail">
+			<view class="go_pay bg" bindtap="intoPath" data-path="/pages/appoint_detail/appoint_detail">
 				立即预约
 			</view>
 		</view>

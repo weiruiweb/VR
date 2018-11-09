@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "流水记录"
+  "navigationBarTitleText": "流水记录",
+   "enablePullDownRefresh":true
 }

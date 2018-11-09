@@ -2,17 +2,17 @@
 <view class="date font30">
     <view class="date_item">
         <view style="width:45%;display:flex;align-items:center;">
-            <view class="date_left" style="color:#00c6f7;width:100%;">
-                <picker  mode="date"  bindchange="bindTimeChange" >
-                    <view style="display:flex;align-items:center;width:100%;height:100%;">
+            <view class="date_left" style="color:#39bddf;width:100%;">
+                <picker  mode="date" value="{{web_startTime}}" data-type="startTime" bindchange="bindTimeChange" >
+                    <view style="display:flex;align-items:center;width:100%;">
                         <view style="width:85%;height:70rpx;">
-                            <view class="picker text color2">
+                            <view class="picker text">
                               起始日期
                             </view>
-                            <view class="text font22  color2" >{{time}}</view>
+                            <view class="text  font22" >{{web_startTime}}</view>
                         </view>
                         <view style="width:15%;height:70rpx;" class="flex">
-                            <view class="credit_icon" style="{{img}};background-position:-165px -30px;"></view>
+                            <view class="credit_icon" style="{{img}};background-position:-180px -30px;"></view>
                         </view>
                     </view> 
                 </picker>
@@ -23,54 +23,43 @@
     </view>
     <view class="date_item" style="border:none;">
         <view style="width:45%;display:flex;align-items:center;">
-            <view class="date_left" style="color:#00c6f7;width:100%;">
-                <picker  mode="date" bindchange="bindTimeChange" >
-                    <view style="display:flex;align-items:center;width:100%;height:100%;">
+            <view class="date_left" style="color:#39bddf;width:100%;">
+                <picker  mode="date" value="{{web_endTime}}" data-type="endTime" bindchange="bindTimeChange" >
+                    <view style="display:flex;align-items:center;width:100%;">
                         <view style="width:85%;height:70rpx;">
                             <view class="picker text">
                               截至日期
                             </view>
-                            <view class="text font22">{{time}}</view>
+                            <view class="text  font22" >{{web_endTime}}</view>
                         </view>
-                        <view style="width:15%;height:70rpx;" class="flex">
-                             <view class="credit_icon" style="{{img}};background-position:-180px -30px;"></view>
+                        <view style="width:15%;height:70rpx;"  class="flex">
+                            <view class="credit_icon" style="{{img}};background-position:-180px -30px;"></view>
                         </view>
                     </view>
                 </picker>
             </view>
             
         </view> 
-    </view>     
+    </view> 
 </view>
+    
+
 <view class="credit_cont">
-    <view class="credit_list">
-        <view class="credit_item">
-            <view class="credit_left">
-                <view class="credit_reson font28">
-                    签到一天领取1积分
+    <block wx:for="{{web_mainData}}" wx:key="id">
+        <view class="credit_list">
+            <view class="credit_item">
+                <view class="credit_left">
+                    <view class="credit_reson font28">
+                        {{item.order[0].snap_product.title}}
+                    </view>
+                    <view class="credit_dates font24 color9">
+                        {{item.create_time}}
+                    </view>
                 </view>
-                <view class="credit_dates font24 color9">
-                    0000-0-0
+                <view class="credit_right font28 {{item.count>0?'color2':''}}">
+                    {{item.count}}
                 </view>
-            </view>
-            <view class="credit_right font28">
-                -700
             </view>
         </view>
-    </view>
-    <view class="credit_list">
-        <view class="credit_item">
-            <view class="credit_left">
-                <view class="credit_reson font28">
-                    签到一天领取1积分
-                </view>
-                <view class="credit_dates font24 color9">
-                    0000-0-0
-                </view>
-            </view>
-            <view class="credit_right font28 color2">
-                +70
-            </view>
-        </view>
-    </view>
+    </block>
 </view>

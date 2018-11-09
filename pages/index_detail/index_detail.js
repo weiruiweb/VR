@@ -1,39 +1,71 @@
-//index.js
-//获取应用实例
-const app = getApp()
+import {Api} from '../../utils/api.js';
+var api = new Api();
+const app = getApp();
+import {Token} from '../../utils/token.js';
+const token = new Token();
 
 Page({
   data: {
-  tabCurrent:0,
-  isShow:false,
-  chooseType:0,
-  img:'background:url(/images/vr.png)'
+   
+    mainData:[],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: false,
+    interval: 2000,
+    duration: 500,
+    previousMargin: 0,
+    nextMargin: 0,
+    currentId:0,
+    id:'',
+    isShow:true,
+    isChoose:0,
+    img:'background-image:url(http://www.solelycloud.com/images/vr.png);'
   },
-  
-  onLoad: function () {
-   this.setData({
+  //事件处理函数
+ 
+  onLoad(options) {
+    const self = this;
+    this.setData({
       fonts:app.globalData.font
-    })
+    });
+    self.data.id = options.id;
+    self.getMainData();
   },
-  goBuy:function(){
-    var isShow = !this.data.isShow;
-    this.setData({
-      isShow:isShow
-    })
+
+  getMainData(){
+    const self = this;
+    const postData = {};
+    postData.searchItem = {
+      id:self.data.id
+    }
+    const callback = (res)=>{
+      if(res.info.data.length>0){
+        self.data.mainData = res.info.data[0]  
+      }
+      wx.hideLoading();
+      self.data.mainData.content = api.wxParseReturn(res.info.data[0].content).nodes;
+      self.setData({
+        web_mainData:self.data.mainData,
+      });     
+    };
+    api.productGet(postData,callback);
   },
-  close:function(){
-    this.setData({
-      isShow:false
-    })
-  },
-  choose:function(e){
-    var chooseType = e.currentTarget.dataset.type;
-    this.setData({
-      chooseType:chooseType
-    })
-  },
-   intoPath(e){
+
+
+  intoPath(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+
+  intoPathRedi(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),'redi');
+  },
+
+
+ 
+ 
 })
+
+

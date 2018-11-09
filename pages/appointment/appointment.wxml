@@ -9,16 +9,16 @@
                         <view class="stroe_icon">
                             <view style="width:17px;height:15px;{{img}};background-position: 0 0;margin:0 auto;"></view>
                         </view>
-                        <view class="stroe_text font30">VR体验馆</view>
+                        <view class="stroe_text font30">{{web_labelData.title}}</view>
                     </view>
                     <view class="store_list flex">
                         <view class="stroe_icon">
                             <view style="width:17px;height:15px;{{img}};background-position: -21px 0;margin:0 auto;"></view>
                         </view>
-                        <view class="stroe_text font30 avoidOverflow">西安市高新区高新大都荟A座2007</view>
+                        <view class="stroe_text font30 avoidOverflow">{{web_labelData.description}}</view>
                     </view>
                 </view>
-                <view class="store_right">
+                <view class="store_right" bindtap="intoPath" data-path="/pages/search/search">
                     <view style="width:17px;height:15px;{{img}};background-position:-92px -100px;margin:0 auto;"></view>
                     <view class="font28">切换店铺</view>
                 </view>
@@ -30,43 +30,24 @@
     <view class="appoint_cont">
         <view class="appoint_tlt font30">VR项目</view>
         <view class="w710 flexRowBetween" style="flex-wrap: wrap">
-          <view class="recommend_left" bindtap="intoPath" data-path="/pages/detail/detail">
-              <image src="/images/product.png"></image>
-              <view class="product_name1 font30 avoidOverflow">名称名称名称名称</view>
-              <view class="product_pro font28"><text class="color">¥300</text>积分</view>
-          </view>
-          <view class="recommend_left" bindtap="intoPath" data-path="/pages/detail/detail">
-              <image src="/images/product.png"></image>
-              <view class="product_name1 font30 avoidOverflow">名称名称名称名称</view>
-              <view class="product_pro font28"><text class="color">¥300</text>积分</view>
-          </view>
-          <view class="recommend_left" bindtap="intoPath" data-path="/pages/detail/detail">
-              <image src="/images/product.png"></image>
-              <view class="product_name1 font30 avoidOverflow">名称名称名称名称</view>
-              <view class="product_pro font28"><text class="color">¥300</text>积分</view>
-          </view>
-          <view class="recommend_left" bindtap="intoPath" data-path="/pages/detail/detail">
-              <image src="/images/product.png"></image>
-              <view class="product_name1 font30 avoidOverflow">名称名称名称名称</view>
-              <view class="product_pro font28"><text class="color">¥300</text>积分</view>
-          </view>
+          <block wx:for="{{web_mainData}}" wx:key="id">
+            <view class="recommend_left" bindtap="intoPath" data-path="/pages/detail/detail?id={{item.id}}">
+                <image src="{{item.mainImg[0].url}}"></image>
+                <view class="product_name1 font30 avoidOverflow">{{item.title}}</view>
+                <view class="product_pro font28"><text class="color">¥{{item.price}}</text></view>
+            </view>
+          </block>
         </view>
     </view>
 </view>
-<view style="width:100%;height:110rpx;"></view>
-<view class="navbar">
-    <view class="navbar_item"   bindtap="intoPathRedirect" data-path="/pages/index/index">
-        <view class="nav_img" style="{{img}};background-position:-0px -60px;"></view>
-        <view class="text">首页</view>
-    </view>
-    <view class="navbar_item"   bindtap="intoPathRedirect" data-path="/pages/appointment/appointment">
-        <view class="nav_img" style="{{img}};background-position:-85px -60px;"></view>
-        <view class="text this-text">预约</view>
-    </view>
-    <view class="navbar_item"   bindtap="intoPathRedirect" data-path="/pages/user/user">
-        <view class="nav_img" style="{{img}};background-position:-108px -60px;"></view>
-        <view class="text">我的</view>
-    </view>
+
+<view class="select_box" wx:if="{{select}}">
+    <block wx:for="{{web_storeData}}" wx:key="id">
+        <view class="select_one" bindtap="mySelect" data-id="{{item.id}}">{{item.title}}</view>
+    </block>
 </view>
+
+
+
 
 

@@ -1,57 +1,39 @@
 <!--index.wxml-->
-<view class="tab font30 flexRowBetween">
-    <view class="tab_item " data-id="0" bindtap="tab">
-        <text class="{{currentId == 0?'tab_this':''}}">全部</text>
-    </view>
-    <view class="tab_item " data-id="1" bindtap="tab">
-        <text class="{{currentId == 1?'tab_this':''}}">内容相关</text>
-    </view>
-    <view class="tab_item" data-id="2" bindtap="tab">
-        <text class="{{currentId == 2?'tab_this':''}}">会员相关</text>
-    </view>
-    <view class="tab_item" data-id="3" bindtap="tab">
-        <text class="{{currentId == 3?'tab_this':''}}">游戏内容</text>
-    </view>
+
+<view class="banner">
+  <image src="/images/product.png"></image>
 </view>
+<scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+<view class="tab font30 flexRowBetween">
+  <block wx:for="{{web_labelData}}" wx:key="id">
+    <view class="tab_item " data-num="{{item.id}}"  bindtap="menuClick" style="width:{{web_viewWidth}}">
+        <text class="{{web_num==item.id?'tab_this':''}}">{{item.title}}</text>
+    </view>
+  </block>
+</view>
+</scroll-view>
+
 <view class="content_box w710">
-      <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail">
-          <view class="product_box flexRowBetween">
-              <view class="product_left">
-                  <image src="/images/product.png"></image>
-              </view>
-              <view class="product_right flexRowBetween">
-                  <view class="product_detail">
-                      <view class="flexRowBetween" style="height:40%;">
-                        <view class="font28 avoidOverflow flex" style="width:50%;">
-                          标题标题标题标题标题标题
-                        </view>
-                        <view class="font28" style="width:40%;text-align: right;">2018-9-9</view>
+  <block wx:for="{{web_mainData}}" wx:key="id">
+    <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail">
+        <view class="product_box flexRowBetween">
+            <view class="product_left">
+                <image src="/images/product.png"></image>
+            </view>
+            <view class="product_right flexRowBetween">
+                <view class="product_detail">
+                    <view class="flexRowBetween" style="height:40%;">
+                      <view class="font32 avoidOverflow flex" style="width:40%;">
+                        {{item.title}}
                       </view>
-                      <view class="font32  flex" style="height:60%;overflow: hidden;">
-                        地址地址的地址地址的地址地址的地址地址的
-                      </view>
-                  </view>
-              </view>
-          </view>
-      </view>
-       <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail">
-          <view class="product_box flexRowBetween">
-              <view class="product_left">
-                  <image src="/images/product.png"></image>
-              </view>
-              <view class="product_right flexRowBetween">
-                  <view class="product_detail">
-                      <view class="flexRowBetween" style="height:40%;">
-                        <view class="font28 avoidOverflow flex" style="width:50%;">
-                          标题标题标题标题标题标题
-                        </view>
-                        <view class="font28" style="width:40%;text-align: right;">2018-9-9</view>
-                      </view>
-                      <view class="font32  flex" style="height:60%;overflow: hidden;">
-                        地址地址的地址地址的地址地址的地址地址的
-                      </view>
-                  </view>
-              </view>
-          </view>
-      </view>
+                      <view class="font26" style="width:60%;text-align: right;">{{item.create_time}}</view>
+                    </view>
+                    <view class="font28  flex" style="height:60%;overflow: hidden;">
+                      {{item.description}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+  </block>
 </view>

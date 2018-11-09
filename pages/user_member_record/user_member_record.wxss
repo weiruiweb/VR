@@ -1,5 +1,9 @@
 /**index.wxss**/
-
+page{
+	width:100%;
+	min-height:100%;
+	background:#333;
+}
 .user_img{
 	width:140rpx;
 	height:140rpx;

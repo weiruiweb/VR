@@ -7,7 +7,7 @@
 </view>
 <view class="content_box w710">
   <block wx:for="{{web_labelData}}" wx:key="id">
-      <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/appointment/appointment?id={{item.id}}">
+      <view class="product flexRowBetween w710" bindtap="intoPathRedirect" data-path="/pages/appointment/appointment?id={{item.id}}">
           <view class="product_box flexRowBetween">
               <view class="product_left">
                   <image src="{{item.mainImg[0].url}}"></image>

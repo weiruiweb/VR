@@ -265,8 +265,8 @@ swiper{
 	margin:0 auto;
 }
 .activty_icon{
-	width:82rpx;
-	height:82rpx;
+	width:41px;
+	height:41px;
 	margin:0 auto;
 }
 .nav_img{

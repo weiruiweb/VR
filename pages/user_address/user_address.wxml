@@ -4,14 +4,14 @@
 	<view class="manage w710 flex" bindtap="choose" data-id="{{item.id}}">
 		<view class="manage_cont">
 			<view class="user_address flex">
-				<view class="address_left color_this">
+				<view class="address_left color_c">
 					{{item.name}}
 				</view>
-				<view class="address_right color_this">
+				<view class="address_right color_c">
 					{{item.phone}}
 				</view>
 			</view>
-			<view class="avoidOverflow address_infor color_this">{{item.province+item.city+item.country+item.detail}}</view>
+			<view class="avoidOverflow address_infor color_c">{{item.province+item.city+item.country+item.detail}}</view>
 		</view>
 	</view>
 	<view class="w710 flex">

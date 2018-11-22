@@ -5,15 +5,15 @@
         <view class="product flexRowBetween" bindtap="intoPath" data-path="/pages/appointment/appointment">
           <view class="product_box flexRowBetween">
               <view class="product_left">
-                  <image src="/images/product.png"></image>
+                  <image src="{{web_mainData.products[0].snap_product.product.mainImg[0].url}}"></image>
               </view>
               <view class="product_right flexRowBetween">
                   <view class="product_detail">
                       <view class="font32 avoidOverflow flex" style="height:50%">
-                        {{web_mainData.product.title}}
+                        {{web_mainData.products[0].snap_product.product.title}}
                       </view>
                       <view class="font28  flex avoidOverflow" style="height:50%;overflow: hidden;">
-                        {{web_mainData.product.description}}
+                        {{web_mainData.products[0].snap_product.product.description}}
                       </view>
                   </view>
               </view>
@@ -28,11 +28,11 @@
         </view>
         <view class="user_infor flex">
             <view class="account_left avoidOverflow">项目名称</view>
-            <view class="account_left account_right avoidOverflow">{{web_mainData.product.title}}</view>
+            <view class="account_left account_right avoidOverflow">{{web_mainData.products[0].snap_product.product.title}}</view>
         </view>
         <view class="user_infor flex">
             <view class="account_left avoidOverflow" style="width:25%;">预约时间</view>
-            <view class="account_left account_right" style="width:75%;">{{func.timestampToTime(web_passage1)}}   {{web_labelData.title}}</view>
+            <view class="account_left account_right" style="width:75%;">{{web_mainData.passage1}}</view>
         </view>
         <view class="user_infor flex" bindtap="test">
             <view class="account_left">预约价格</view>

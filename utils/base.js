@@ -482,7 +482,8 @@ class Base{
             var h = date.getHours() + ':';
             var m = date.getMinutes() + ':';
             var s = date.getSeconds();
-            return Y+M+D+h+m+s;
+            console.log(Y+M+D)
+            return Y+M+D;
         }
 
 

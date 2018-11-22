@@ -19,24 +19,24 @@ Page({
   onLoad: function (options) {
     const self = this;
     console.log(options);
+    self.data.order_id = options.order_id;
     self.setData({
-      web_passage1:options.passage1,
+     
       web_storeName:options.storeName,
       img:app.globalData.img,
       web_ratio:1
     });
-    self.data.passage1 = options.passage1;
-    self.data.labelId = options.labelId
-    self.data.id = options.id;
+
     self.getMainData();
   },
 
   getMainData(){
     const self = this;
     const postData = {};
+    postData.token = wx.getStorageSync('token');
     postData.searchItem = {
       thirdapp_id:getApp().globalData.thirdapp_id,
-      id:self.data.id
+      id:self.data.order_id
     };
 
     const callback = (res)=>{
@@ -47,22 +47,19 @@ Page({
       }
       wx.hideLoading();
 
-      self.data.pay = {
+    /*  self.data.pay = {
         wxPay : self.data.mainData.price,
         wxPayStatus : 0
       };
-
-
-
-      self.data.paidMoney = self.data.mainData.price;
+      self.data.paidMoney = self.data.mainData.price;*/
       self.setData({
-        web_paidMoney:self.data.paidMoney,
+
         web_mainData:self.data.mainData,
       }); 
-      self.getLabelData();
+
       self.getCardData()    
     };
-    api.skuGet(postData,callback);
+    api.orderGet(postData,callback);
   },
 
   getLabelData(){
@@ -139,20 +136,20 @@ Page({
       
       var ratio = self.data.cardData[self.data.index].discount/100;
       
-      if(self.data.cardData[self.data.index].balance>=self.data.mainData.price*ratio){
+      if(self.data.cardData[self.data.index].balance>=self.data.mainData.vipPrice*ratio){
         self.data.pay.card = {
           card_no:self.data.cardData[self.data.index].order_no,
-          price:self.data.mainData.price*ratio
+          vipPrice:self.data.mainData.vipPrice*ratio
         };
-        self.data.pay.discount = self.data.mainData.price-self.data.mainData.price*ratio;
+        self.data.pay.discount = self.data.mainData.vipPrice-self.data.mainData.vipPrice*ratio;
       
       }else{ 
         self.data.pay.card = {
           card_no:self.data.cardData[self.data.index].order_no,
           price:self.data.cardData[index].balance,
         };
-        self.data.pay.discount = self.data.mainData.price*ratio;
-        self.data.pay.wxPay = self.data.mainData.price - self.data.pay.card.price - self.data.pay.discount;
+        self.data.pay.discount = self.data.mainData.vipPrice*ratio;
+        self.data.pay.wxPay = self.data.mainData.vipPrice - self.data.pay.card.vipPrice - self.data.pay.discount;
         self.data.pay.wxPayStatus = 0;
       };
       self.setData({
@@ -178,43 +175,7 @@ Page({
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
 
-  addOrder(){
-    const self = this;
-     if(!self.data.order_id){
-      self.setData({
-        buttonClicked: true
-      });
-      const postData = {
-        token:wx.getStorageSync('token'),
-        sku:[
-          {id:self.data.id,count:1}
-        ],
-        pay:{wxPay:self.data.mainData.price},
-        type:1,
-        data:{
-          passage1:self.data.passage1,
-          labelId:self.data.labelId,
-          timeId:self.data.mainData.sku_item[0]
-        }
-      };
-      const callback = (res)=>{
-        if(res&&res.solely_code==100000){
-          setTimeout(function(){
-            self.setData({
-              buttonClicked: false
-            })
-          }, 1000)         
-        }else if(res.msg=="库存不足"){
-          api.showToast('商品库存不足','none')
-        };
-        self.data.order_id = res.info.id
-        self.pay(self.data.order_id);     
-      };
-      api.addOrder(postData,callback);
-    }else{
-      self.pay(self.data.order_id)
-    }   
-  },
+
 
 
 
@@ -224,8 +185,22 @@ Page({
     const postData = api.cloneForm(self.data.pay);
     postData.token = wx.getStorageSync('token');
     postData.searchItem = {id:order_id};
-
- 
+    postData.payAfter = [];
+    if(self.data.pay.card){
+      postData.payAfter.push(
+        {
+          tableName:'FlowLog',
+          FuncName:'add',
+          data:{
+            count:(self.data.cardData[self.data.index].ratio*self.data.mainData.vipPrice.toFixed(2))/100,
+            trade_info:'会员消费返积分',
+            user_no:wx.getStorageSync('info').user_no,
+            type:2,
+            thirdapp_id:getApp().globalData.thirdapp_id
+          }
+        }
+      );
+    }
     const callback = (res)=>{
       if(res.solely_code==100000){
         if(res.info){

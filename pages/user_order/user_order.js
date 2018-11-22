@@ -115,13 +115,12 @@ Page({
     const postData = {};
     postData.token = wx.getStorageSync('token');
     postData.data ={
-      transport_status:2,
-      order_step:3
+      order_step:1
     }
     postData.searchItem = {};
     postData.searchItem.id = api.getDataSet(e,'id');
     const callback  = res=>{
-      api.showToast('已确认收货','none');
+      api.showToast('申请成功','none');
       self.getMainData(true);
     };
     api.orderUpdate(postData,callback);
@@ -141,15 +140,15 @@ Page({
     });
     self.data.searchItem = {};
     if(num=='0'){
-      
+      self.data.searchItem.pay_status='1',
       self.data.searchItem.transport_status = '0';
       self.data.searchItem.order_step = '0';
     }else if(num=='1'){
-    
+      self.data.searchItem.pay_status='1',
       self.data.searchItem.transport_status = '1';
       self.data.searchItem.order_step = '0';
     }else if(num=='2'){
-   
+      self.data.searchItem.pay_status='1',
       self.data.searchItem.transport_status = '0';
       self.data.searchItem.order_step = '1';
     }

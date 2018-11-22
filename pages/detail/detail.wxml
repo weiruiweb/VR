@@ -10,7 +10,7 @@
 	<view class="product_top">
 		<view class="price_sale flex">
 			<view class="price">
-				￥{{web_mainData.price}}元
+				￥{{web_mainData.price}}元 
 			</view>
 		</view>
 		<view class="product_name avoidOverflow color1">
@@ -40,10 +40,12 @@
 			<view style="width:19px;height:17px;{{img}};background-position: -88px 0px;margin:0 auto;"></view>
 			<view class="font28">首页</view>
 		</view>
-		<view class="consult collect">
-			<view style="width:17px;height:17px;{{img}};background-position: -112px 0px;margin:0 auto;"></view>
-			<view class="font28">分享</view>
-		</view>
+	
+			<button class="consult collect"  bindtap="onShareAppMessage"  open-type="share" style="line-height:normal">
+				<view style="width:17px;height:17px;{{img}};background-position: -112px 0px;margin:0 auto;"></view>
+				<view class="font28">分享</view>
+			</button>
+	
 		<view class="go_buy flexRowBetween" bindtap="goBuy">
 			<view class="go_pay bg">
 				立即预约
@@ -63,7 +65,7 @@
 					{{web_mainData.description}}
 				</view>
 				<view class="font30 color2">
-				￥{{web_skuData.price?web_skuData.price:web_mainData.price}}
+				￥{{web_skuData.price?web_skuData.price:web_mainData.price}}(会员价:{{web_skuData.vipPrice?web_skuData.vipPrice:web_mainData.price}}元|预约价:{{web_skuData.reservaPrice?web_skuData.reservaPrice:web_mainData.price}})
 				</view>
 			</view>
 			<view class="close" bindtap="close">
@@ -83,13 +85,13 @@
 				<view class="time_left font28">预约时间</view>
 				<view class="time_right flex">
 					<block wx:for="{{web_mainData.sku}}" wx:key="id">
-						<view class="time1" style="{{web_chooseId==item.id?'background:#3ab3c3;color:#fff':''}}" data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
+						<view class="time1" style="{{web_chooseId==item.id?'background:#3ab3c3;color:#fff':''}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
 					</block>
 				</view>
 			</view>
 		</view>
 	</view>
-	<button class="submit_info" bindtap="intoPath" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
+	<button class="submit_info" bindtap="addOrder" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
 </view>
 
 

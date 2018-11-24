@@ -13,8 +13,8 @@ Page({
     searchItem:{
       pay_status:'1',
       type:1
-
     },
+    getBefore:{}
   },
   onLoad(options){
     const self = this;
@@ -37,6 +37,9 @@ Page({
     };
     const postData = {};
     postData.paginate = api.cloneForm(self.data.paginate);
+    if(JSON.stringify(self.data.getBefore)!='{}'){
+      postData.getBefore = api.cloneForm(self.data.getBefore);
+    };
     postData.token = wx.getStorageSync('token');
     postData.searchItem = api.cloneForm(self.data.searchItem)
     postData.searchItem.thirdapp_id = api.cloneForm(getApp().globalData.thirdapp_id);
@@ -72,8 +75,9 @@ Page({
           for (var i = 0; i < self.data.mainData.length; i++) {
             if(self.data.mainData[i].passage1==''){
               self.data.mainData.splice(i,1)
-            }
-          }
+            };
+          };
+
         }else{
           self.data.isLoadAll = true;
           api.showToast('没有更多了','none');
@@ -139,6 +143,7 @@ Page({
       num: num
     });
     self.data.searchItem = {};
+    self.data.getBefore = {};
     if(num=='0'){
       self.data.searchItem.pay_status='1',
       self.data.searchItem.transport_status = '0';
@@ -151,6 +156,21 @@ Page({
       self.data.searchItem.pay_status='1',
       self.data.searchItem.transport_status = '0';
       self.data.searchItem.order_step = '1';
+    }else if(num=='3'){
+      self.data.getBefore = {
+        hasPay:{
+          tableName:'FlowLog',
+          middleKey:'order_no',
+          key:'order_no',
+          condition:'in',
+          searchItem:{
+            user_no:['=',[wx.getStorageSync('info').info.user_no]],
+            status:['=',[1]]
+          }
+        }
+      };
+      self.data.searchItem.pay_status='0';
+      
     }
     self.setData({
       web_mainData:[],
@@ -170,6 +190,11 @@ Page({
   intoPathRedirect(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'redi');
+  },
+
+  intoPath(e){
+    const self = this;
+    api.pathTo(api.getDataSet(e,'path'),api.getDataSet(e,'nav_type'));
   }, 
 
 })

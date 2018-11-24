@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -92,7 +92,14 @@
 				{
 					"id": -1,
 					"name": "我的卡",
-					"pathName": "pages/user_member/user_member"
+					"pathName": "pages/user_member/user_member",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "支付页面",
+					"pathName": "pages/appoint_detail/appoint_detail",
+					"query": "order_id=103&storeName=VR体验馆1"
 				}
 			]
 		}

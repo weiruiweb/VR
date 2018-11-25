@@ -47,7 +47,7 @@
     <view class="w710">
         <view class="font24 note">注：在预约时间前某段时间（例如1小时前）内取消预约可全部退 款，超过1小时不退费</view>
         <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="returnPay" data-id="{{item.id}}">取消预约</view>
-        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="intoPath" data-id="item.id" data-nav_type="nav"  data-path="/pages/appoint_detail/appoint_detail?order_id={{item.id}}&&storeName={{item.store[0].title}}">支付剩余金额</view>
+        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="intoPath" data-id="item.id" data-nav_type="nav"  data-path="/pages/appoint_detail/appoint_detail?order_id={{item.id}}&&storeName={{item.store[0].title}}" style="width:200rpx;margin-right:20rpx;">支付剩余金额</view>
     </view>
 
 </block>

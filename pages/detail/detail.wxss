@@ -153,6 +153,7 @@ line-height:62rpx;}
 	margin-bottom:35rpx;
 	width:100%;
 	height:135rpx;
+	position:relative;
 }
 .choose_pro{
 	width:25%;
@@ -163,12 +164,15 @@ line-height:62rpx;}
 	height:135rpx;
 }
 .close{
-	width:10%;
+	width:5%;
 	text-align:right;
 	height: 100%;
+	position:absolute;
+	top:0rpx;
+	right:10rpx;
 }
 
-.product_txt{width:65%;}
+.product_txt{width:75%;}
 #type{
 	height:60rpx;
 	margin-bottom:28rpx;

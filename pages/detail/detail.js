@@ -95,7 +95,8 @@ Page({
         web_skuLabel:self.data.mainData.label[13]['child'],
         web_mainData:self.data.mainData,
         web_labelId:self.data.mainData.label[self.data.mainData.category_id].id
-      });   
+      });  
+        console.log(999,self.data.mainData);
        self.getSkuData()  
     };
     api.productGet(postData,callback);

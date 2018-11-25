@@ -61,7 +61,7 @@
 			</view>
 			<view class="product_txt">
 				<view class="font28">{{web_mainData.title}}</view>
-				<view class="font24">
+				<view class="font24 avoidOverflow">
 					{{web_mainData.description}}
 				</view>
 				<view class="font30 color2">

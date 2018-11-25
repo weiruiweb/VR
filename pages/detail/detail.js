@@ -171,8 +171,8 @@ Page({
         self.data.order_id = res.info.id;
         if(res&&res.solely_code==100000){
           api.pathTo('/pages/appoint_detail/appoint_detail?order_id='+self.data.order_id+'&&storeName='+self.data.mainData.label[self.data.mainData.category_id].title,'nav')       
-        }else if(res.msg=="库存不足"){
-          api.showToast('商品库存不足','none')
+        }else{
+          api.showToast(res.msg,'error')
         };
         
       };

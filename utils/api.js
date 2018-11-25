@@ -65,6 +65,18 @@ class Api extends Base{
         this.request(allParams);
     }
 
+    returnPay(param,callback){
+        var allParams ={
+            url:'Base/Pay/returnPay',
+            type:'post',
+            data:param,
+            sCallback: function(data) {
+                callback && callback(data);
+            }
+        };
+        this.request(allParams);
+    }
+
     upload(param,callback){
         var allParams ={
             url:'Base/FtpImage/upload',

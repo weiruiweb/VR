@@ -237,10 +237,8 @@ Page({
   },
 
 
-
-
-
   pay(order_id){
+
     const self = this;
     var order_id = self.data.order_id;
     const postData = api.cloneForm(self.data.pay);
@@ -261,12 +259,12 @@ Page({
           }
         }
       );
-    }
+    };
     const callback = (res)=>{
       if(res.solely_code==100000){
         if(res.info){
           const payCallback=(payData)=>{
-          if(payData==1){
+            if(payData==1){
               setTimeout(function(){
                 api.pathTo('/pages/user_order/user_order','redi');
               },800)  
@@ -274,9 +272,11 @@ Page({
           };
           api.realPay(res.info,payCallback); 
         }else{
-          api.showToast('支付成功','none')
+          api.showToast('支付成功','none');
+          setTimeout(function(){
+            api.pathTo('/pages/user_order/user_order','redi');
+          },800);
         };
-         
       }else{
         api.showToast('支付失败','none')
       }   

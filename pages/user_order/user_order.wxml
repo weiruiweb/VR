@@ -11,7 +11,10 @@
         <text class="{{num == 1?'tab_this':''}}">已体验</text>
     </view>
     <view class="tab_item" data-num="2" bindtap="menuClick">
-        <text class="{{num == 2?'tab_this':''}}">已取消</text>
+        <text class="{{num == 2?'tab_this':''}}">申请撤单</text>
+    </view>
+    <view class="tab_item" data-num="4" bindtap="menuClick">
+        <text class="{{num == 4?'tab_this':''}}">已撤单</text>
     </view>
 </view>
 <block wx:for="{{web_mainData}}" wx:key="id">
@@ -23,7 +26,8 @@
             <view class=" tlt_right color2 font24" wx:if="{{item.pay_status == '0'&&item.transport_status == '0'}}">已付预约金</view>
             <view class=" tlt_right color2 font24" wx:if="{{item.pay_status == '1'&&item.transport_status == '0'}}">待体验</view>
             <view class=" tlt_right color2 font24" wx:if="{{item.transport_status == '1'}}">已完成</view>
-            <view class=" tlt_right color2 font24" wx:if="{{item.order_step == '1'}}">已取消</view>
+            <view class=" tlt_right color2 font24" wx:if="{{item.order_step == '1'}}">申请撤单</view>
+            <view class=" tlt_right color2 font24" wx:if="{{item.order_step == '2'}}">已撤单</view>
         </view>
         <view class="product_box w710 flexRowBetween">
             <view class="product_left">
@@ -42,7 +46,7 @@
 
     <view class="w710">
         <view class="font24 note">注：在预约时间前某段时间（例如1小时前）内取消预约可全部退 款，超过1小时不退费</view>
-        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="orderUpdate" data-id="item.id">取消预约</view>
+        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="returnPay" data-id="{{item.id}}">取消预约</view>
         <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="intoPath" data-id="item.id" data-nav_type="nav"  data-path="/pages/appoint_detail/appoint_detail?order_id={{item.id}}&&storeName={{item.store[0].title}}">支付剩余金额</view>
     </view>
 

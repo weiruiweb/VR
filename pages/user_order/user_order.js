@@ -114,19 +114,18 @@ Page({
     api.orderDelete(postData,callback);
   },
 
-  orderUpdate(e){
+  returnPay(e){
     const self = this;
     const postData = {};
     postData.token = wx.getStorageSync('token');
-    postData.data ={
-      order_step:1
-    }
     postData.searchItem = {};
     postData.searchItem.id = api.getDataSet(e,'id');
-    const callback  = res=>{
-      api.showToast('申请成功','none');
+    postData.data = {order_step:1};
+    const callback  = (res)=>{
+      api.dealRes(res);
       self.getMainData(true);
     };
+
     api.orderUpdate(postData,callback);
   },
 
@@ -153,9 +152,9 @@ Page({
       self.data.searchItem.transport_status = '1';
       self.data.searchItem.order_step = '0';
     }else if(num=='2'){
-      self.data.searchItem.pay_status='1',
-      self.data.searchItem.transport_status = '0';
       self.data.searchItem.order_step = '1';
+    }else if(num=='4'){
+      self.data.searchItem.order_step = '2';
     }else if(num=='3'){
       self.data.getBefore = {
         hasPay:{
@@ -170,6 +169,7 @@ Page({
         }
       };
       self.data.searchItem.pay_status='0';
+      self.data.searchItem.order_step = '0';
       
     }
     self.setData({

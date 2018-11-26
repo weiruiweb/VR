@@ -94,4 +94,3 @@
 	<button class="submit_info" bindtap="addOrder" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
 </view>
 
-

@@ -46,3 +46,4 @@
         <view class="select_one" bindtap="mySelect" data-id="{{item.id}}">{{item.title}}</view>
     </block>
 </view>
+<view class="font22 color6" style="text-align:center;">技术支持：西安纯粹云科技有限公司</view>

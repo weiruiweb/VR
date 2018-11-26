@@ -12,7 +12,8 @@ Page({
     mainData:[],
     searchItem:{
       pay_status:'1',
-      type:1
+  	  transport_status:'0',
+  	  order_step:'0'
     },
     getBefore:{}
   },
@@ -43,6 +44,7 @@ Page({
     postData.token = wx.getStorageSync('token');
     postData.searchItem = api.cloneForm(self.data.searchItem)
     postData.searchItem.thirdapp_id = api.cloneForm(getApp().globalData.thirdapp_id);
+    postData.searchItem.type = 1;
     postData.order = {
       create_time:'desc'
     };
@@ -144,6 +146,7 @@ Page({
     self.data.searchItem = {};
     self.data.getBefore = {};
     if(num=='0'){
+
       self.data.searchItem.pay_status='1',
       self.data.searchItem.transport_status = '0';
       self.data.searchItem.order_step = '0';

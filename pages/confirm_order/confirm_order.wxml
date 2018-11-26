@@ -25,7 +25,7 @@
     </view>
     <view class="manage w710 flex" wx:else  bindtap="intoPath" data-path="/pages/user_address/user_address">
         <view class="order_user"  style="{{fonts[5].font}}">
-            <view class="order_left">
+            <view class="order_left" style="font-size:15px;text-align:center">
                 请选择收货地址
             </view>
         </view>

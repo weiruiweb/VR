@@ -92,11 +92,14 @@ Page({
         ],
         pay:{score:self.data.mainData.price},
         snap_address:self.data.addressData,
-        type:1
+        type:2
       };
       if(postData.snap_address.length==0){
           api.showToast('请选择收货地址','none');
-         
+          self.setData({
+        	buttonClicked: false
+      	  });
+          return;
         }
       const callback = (res)=>{
         if(res&&res.solely_code==100000){
@@ -132,10 +135,10 @@ Page({
       api.showToast('兑换成功','none')
       if(res.solely_code==100000){
         setTimeout(function(){
-          api.pathTo('/pages/user_order/user_order','redi');
+          api.pathTo('/pages/user_exchange/user_exchange','redi');
         },800) 
       }else{
-        api.showToast('支付失败','fail')
+        api.showToast(res.msg,'none')
       }
          
     };

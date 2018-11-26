@@ -35,8 +35,10 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     });
-    self.getMainData();
     self.data.selectData = new Date(new Date().toLocaleDateString()).getTime();
+    self.getMainData();
+    
+    console.log(new Date(new Date().toLocaleDateString()).getTime())
     self.setData({
       web_selectData:new Date(new Date().toLocaleDateString()).getTime(),
       img:app.globalData.img
@@ -68,7 +70,7 @@ Page({
         searchItem:{
           status:['in',[1]],
           behavior:['in',[0]],
-          deadline:['between',[self.data.selectData,(self.data.selectData+86400)]]
+          deadline:['between',[self.data.selectData/1000,(self.data.selectData/1000+86400)]]
         },
       } 
     };
@@ -91,7 +93,7 @@ Page({
       self.data.mainData.content = api.wxParseReturn(res.info.data[0].content).nodes;
       self.setData({
 
-        web_chooseId:self.data.mainData.sku[0].id,
+        web_chooseId:self.data.chooseId,
         web_skuLabel:self.data.mainData.label[13]['child'],
         web_mainData:self.data.mainData,
         web_labelId:self.data.mainData.label[self.data.mainData.category_id].id
@@ -157,7 +159,7 @@ Page({
     const postData = {
         token:wx.getStorageSync('token'),
         sku:[
-          {id:self.data.id,count:1}
+          {id:self.data.chooseId,count:1}
         ],
         pay:{wxPay:self.data.skuData.price},
         type:1,
@@ -173,7 +175,7 @@ Page({
         if(res&&res.solely_code==100000){
           api.pathTo('/pages/appoint_detail/appoint_detail?order_id='+self.data.order_id+'&&storeName='+self.data.mainData.label[self.data.mainData.category_id].title,'nav')       
         }else{
-          api.showToast(res.msg,'error')
+          api.showToast(res.msg,'none')
         };
         
       };

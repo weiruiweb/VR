@@ -150,9 +150,6 @@ Page({
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.productData.push.apply(self.data.productData,res.info.data);
-        if(res.info.data.length>2){
-          self.data.productData = self.data.productData.slice(0,2) 
-        }
       }else{
         api.showToast('暂无活动商品','none');
       }

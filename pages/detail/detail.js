@@ -106,19 +106,18 @@ Page({
 
   getLabelData(){
     const self = this;
+    console.log(self.data.skuData.sku_item[0])
     const postData = {
       searchItem:{
         thirdapp_id:getApp().globalData.thirdapp_id,
-        id:self.data.mainData.sku[0].id
+        id:self.data.skuData.sku_item[0]
       }
     };
     const callback = (res) =>{
       if(res.info.data.length>0){
-        self.data.labelData = res.info.data[0]
+        self.data.title = res.info.data[0].title
       };
-      self.setData({
-        web_labelData:self.data.labelData
-      });
+     
     }
     api.labelGet(postData,callback);
   },
@@ -146,10 +145,12 @@ Page({
         self.data.skuData = res.info.data[0]
       }else{
         api.showToast('数据错误','none')
-      }
+      };
+      
       self.setData({
         web_skuData:self.data.skuData,
       });   
+      self.getLabelData()
     };
     api.skuGet(postData,callback);
   },

@@ -111,9 +111,6 @@ Page({
         searchItem:{
           title:['=',['积分兑换商品']],
         },
-        fixSearchItem:{
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              thirdapp_id:getApp().globalData.thirdapp_id
-        },
         middleKey:'category_id',
         key:'id',
         condition:'in'
@@ -122,9 +119,7 @@ Page({
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.scoreData.push.apply(self.data.scoreData,res.info.data);
-        if(res.info.data.length>2){
-          self.data.scoreData = self.data.scoreData.slice(0,2) 
-        }
+        
       }else{
         api.showToast('暂无积分兑换商品','none');
       }
@@ -146,10 +141,24 @@ Page({
     };
     postData.order = {
       listorder:'desc'
-    }
+    };
+    postData.getBefore = {
+      label:{
+        tableName:'label',
+        searchItem:{
+          title:['=',['积分兑换商品']],
+        },
+        middleKey:'category_id',
+        key:'id',
+        condition:'NOT IN'
+      },
+    };
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.productData.push.apply(self.data.productData,res.info.data);
+        if(res.info.data.length>2){
+          self.data.productData = self.data.productData.slice(0,2) 
+        }
       }else{
         api.showToast('暂无活动商品','none');
       }

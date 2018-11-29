@@ -49,7 +49,7 @@
         <view class="credit_list">
             <view class="credit_item">
                 <view class="credit_left">
-                    <view class="credit_reson font28">
+                    <view class="credit_reson font28" style="color:#e5e5e5;">
                         {{item.order[0].snap_product.title}}
                     </view>
                     <view class="credit_dates font24 color9">

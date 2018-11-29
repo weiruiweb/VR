@@ -22,7 +22,7 @@
         </view>
         <view class="user_infor flex"   bindtap="intoPath" data-path="/pages/user_account/user_account">
             <view class="user_icon" style="{{img}};background-position: -40px -28px;width:18px"></view>
-            <text>账户消息</text>
+            <text>账户信息</text>
         </view>
         <view class="user_infor flex" style="border: none;" bindtap="intoPath" data-path="/pages/user_member/user_member">
             <view class="user_icon" style="{{img}};background-position: -62px -30px;"></view>
@@ -44,7 +44,7 @@
         </view>
     </view>
 </view>
-<view class="font22 color6" style="width:100%;text-align:center;" style="position:absolute;bottom:130rpx;">技术支持：西安纯粹科技有限公司</view>
+<view class="font22 color6" style="width:100%;text-align:center;position:absolute;bottom:130rpx;">技术支持：西安纯粹科技有限公司</view>
 <view class="navbar">
     <view class="navbar_item"   bindtap="intoPathRedi" data-path="/pages/index/index">
         <view class="nav_img" style="{{img}};background-position:-0px -60px;"></view>

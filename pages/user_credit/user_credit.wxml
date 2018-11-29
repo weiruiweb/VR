@@ -64,7 +64,7 @@
         <view class="credit_list">
             <view class="credit_item">
                 <view class="credit_left">
-                    <view class="credit_reson font28">
+                    <view class="credit_reson font28" style="color:#e5e5e5;">
                         {{item.trade_info}}
                     </view>
                     <view class="credit_dates font24 color9">

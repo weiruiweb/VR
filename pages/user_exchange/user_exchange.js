@@ -71,9 +71,20 @@ Page({
         searchItem:{
           user_no:wx.getStorageSync('info').user_no
         },
-        condition:'='
+        condition:'in',
+        info:['product_id']
+      },
+       product:{
+        tableName:'product',
+        middleKey:['order','product_id'],
+        key:'id',
+        searchItem:{
+         status:1
+        },
+        condition:'in'
       }
     };
+    
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);

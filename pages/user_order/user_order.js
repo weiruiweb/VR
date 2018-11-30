@@ -8,11 +8,11 @@ const token = new Token();
 
 Page({
   data: {
-    num:0,
+    num:3,
     mainData:[],
     searchItem:{
-      pay_status:'1',
-  	  transport_status:'0',
+      pay_status:'0',
+
   	  order_step:'0'
     },
     getBefore:{}
@@ -24,6 +24,8 @@ Page({
       token.getUserInfo();
     };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
+    self.changeSearch(self.data.num);
+
     self.getMainData();
     self.setData({
       img:app.globalData.img

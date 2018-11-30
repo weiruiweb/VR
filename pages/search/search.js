@@ -28,7 +28,7 @@ Page({
       self.data.sForm.item = options.item,
       self.setData({
         web_sForm:self.data.sForm
-      })
+      });
     };
     self.getLabelData();
     self.setData({

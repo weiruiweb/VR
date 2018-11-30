@@ -50,7 +50,7 @@
             <view class="credit_item">
                 <view class="credit_left">
                     <view class="credit_reson font28" style="color:#e5e5e5;">
-                        {{item.order[0].snap_product.title}}
+                        {{item.product[0].title}}
                     </view>
                     <view class="credit_dates font24 color9">
                         {{item.create_time}}

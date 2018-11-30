@@ -107,10 +107,13 @@ Page({
             self.setData({
               buttonClicked: false
             })
-          }, 1000)         
-        }; 
-        self.data.order_id = res.info.id
-        self.pay(self.data.order_id);     
+          }, 1000)
+          self.data.order_id = res.info.id
+          self.pay(self.data.order_id);          
+        }else{
+          api.showToast(res.msg,'none')
+        };
+    
       };
       api.addOrder(postData,callback);
     }else{

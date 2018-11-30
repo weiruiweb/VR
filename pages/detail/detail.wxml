@@ -2,8 +2,17 @@
 
 <view id="details">
 <wxs module="func" src="../../utils/func.wxs" />
-<view class="banner">
-	<image src="/images/product.png"></image>
+<view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px" bindchange="swiperChange">
+        <block wx:for="{{web_mainData.bannerimg}}" wx:index="{{index}}" wx:key="id">
+          <swiper-item>
+            <image src="{{item.url}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      
+    </view>
 </view>
 
 <view class="detail w710">

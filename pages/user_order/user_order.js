@@ -113,6 +113,7 @@ Page({
     postData.searchItem.id = api.getDataSet(e,'id');
     const callback  = res=>{
       api.dealRes(res);
+      self.data.mainData = [];
       self.getMainData(true);
     };
     api.orderDelete(postData,callback);
@@ -127,6 +128,7 @@ Page({
     postData.data = {order_step:1};
     const callback  = (res)=>{
       api.dealRes(res);
+      self.data.mainData = [];
       self.getMainData(true);
     };
 

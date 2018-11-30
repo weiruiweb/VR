@@ -64,7 +64,6 @@ Page({
           self.setData({
             web_isReserve:true
           });
-          self.data.price = self.data.mainData.products[0].snap_product.reservaPrice
         }else{
           self.data.hasPay = 0;
           for (var i = 0; i < self.data.mainData.flowLog.length; i++) {
@@ -77,12 +76,6 @@ Page({
         api.showToast('数据错误','none');
       };
       wx.hideLoading();
-
-    /*  self.data.pay = {
-        wxPay : self.data.price,
-        wxPayStatus : 0
-      };
-      self.data.paidMoney = self.data.price;*/
 
       
       self.setData({
@@ -187,7 +180,7 @@ Page({
         };
         if(!self.data.isReserve){
           self.data.pay.other = {
-            price:(self.data.mainData.products[0].snap_product.price - self.data.mainData.products[0].snap_product.vipPrice).toFixed(2),
+            price:(self.data.mainData.products[0].snap_product.price - self.data.mainData.products[0].snap_product.vipPrice*ratio).toFixed(2),
             msg:self.data.cardData[self.data.index].order_no+'会员卡折扣'
           };
         };
@@ -221,7 +214,8 @@ Page({
         web_ratio:1
       })
     };
-    console.log('self.data.price',self.data.price)
+    console.log('self.data.price',parseFloat(self.data.mainData.products[0].snap_product.price))
+    console.log('self.data.price',self.data.hasPay)
     self.setData({    
       web_mainData:self.data.mainData,
       web_pay:self.data.pay,

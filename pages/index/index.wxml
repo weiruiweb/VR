@@ -27,9 +27,11 @@
       <block wx:for="{{web_labelData}}" wx:key="id">
         <view class="coach_item" bindtap="intoPath" data-path="/pages/appointment/appointment?id={{item.id}}">
             <view class="coach_img">
-                <image src="{{item.mainImg[0].url}}"></image>
-                <view class="font30 avoidOverflow color1">{{item.title}}</view>
-               <view class="font24 avoidOverflow">{{item.description}}</view>
+                <view style="width:100%;height:190rpx;">
+                  <image src="{{item.mainImg[0].url}}"></image>
+                </view>
+                <view class="font30 avoidOverflow color1" style="height:40rpx;">{{item.title}}</view>
+               <view class="font24 avoidOverflow" style="height:34rpx;">{{item.description}}</view>
             </view>
         </view>
       </block>

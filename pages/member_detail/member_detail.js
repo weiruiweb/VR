@@ -64,7 +64,6 @@ Page({
         product:[
           {id:self.data.id,count:1}
         ],
-        pay:{score:self.data.mainData.price},
         type:3,
         data:{
         	balance:self.data.mainData.balance,

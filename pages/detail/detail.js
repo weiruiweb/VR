@@ -85,6 +85,14 @@ Page({
             };
           }; 
         };
+      
+      if(!self.data.mainData.sku.length>0){
+        api.showToast('数据有误','error');
+        setTimeout(function(){
+          wx.navigateBack({//返回
+            delta:1
+          });
+        },500);
       };
       self.data.mainData.sku.push.apply(self.data.mainData.sku,self.data.mainData.skuToday);
       wx.hideLoading();
@@ -99,7 +107,16 @@ Page({
         web_labelId:self.data.mainData.label[self.data.mainData.category_id].id
       });  
         console.log(999,self.data.mainData);
-       self.getSkuData()  
+       self.getSkuData()
+      }else{
+        api.showToast('数据有误','error');
+        setTimeout(function(){
+          wx.navigateBack({//返回
+            delta:1
+          });
+        },500);
+        
+      }
     };
     api.productGet(postData,callback);
   },

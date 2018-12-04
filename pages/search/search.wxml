@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="search flex font28">
-    <input placeholder="请输入店名查询" bindconfirm="changeBind" data-key="item" value="{{web_sForm.item}}"></input>
+    <input placeholder="请输入店名查询" bindchange="changeBind" data-key="item" value="{{web_sForm.item}}"></input>
     <view class="search_btn flex" >
-      <view style="{{img}};background-position: -188px -60px;width:21px;height:21px;" ></view>
+      <view style="{{img}};background-position: -188px -60px;width:21px;height:21px;" bindtap="search"></view>
     </view>
 </view>
 <view class="content_box w710">

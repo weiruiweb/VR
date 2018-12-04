@@ -38,7 +38,7 @@
                     <view class="font32  product_top flex">
                         <view class="product_name">{{item.store[0].title}}</view><view class="product_price color2">¥{{item.price}}</view></view>
                     <view class="font28 avoidOverflow product_address flex">{{item.store[0].description}}</view>
-                    <view class="font28 flex"><text>{{func.timestampToTime(item.passage1)}}</text><text>{{item.time[0].title}}</text></view>
+                    <view class="font28 flex"><text>{{item.passage1}}</text></view>
                 </view>
             </view>
         </view>
@@ -46,8 +46,10 @@
 
     <view class="w710">
         <view class="font24 note">注：在预约时间前某段时间（例如1小时前）内取消预约可全部退 款，超过1小时不退费</view>
-        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="returnPay" data-id="{{item.id}}">取消预约</view>
-        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="intoPath" data-id="item.id" data-nav_type="nav"  data-path="/pages/appoint_detail/appoint_detail?order_id={{item.id}}&&storeName={{item.store[0].title}}" style="width:200rpx;margin-right:20rpx;">支付剩余金额</view>
+        <view class="cancel font28" wx:if="{{item.pay_status=='0'&&item.order_step=='0'}}" bindtap="returnPay" data-id="{{item.id}}">取消预约</view>
+        
+        <view class="cancel font28" wx:if="{{item.pay_status=='0'}}" bindtap="intoPath" data-id="item.id" data-nav_type="nav"  data-path="/pages/appoint_detail/appoint_detail?order_id={{item.id}}&&storeName={{item.store[0].title}}" style="width:200rpx;margin-right:20rpx;" wx:if="{{item.pay_status=='0'&&item.order_step=='0'}}">支付剩余金额</view>
+
     </view>
 
 </block>

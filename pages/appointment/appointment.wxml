@@ -1,7 +1,7 @@
 <!--index1.wxml-->
 <view class="w710">
     <view class="appointment bg">
-        <image src="/images/banner.png"></image>
+        <image src="{{web_labelData.mainImg[0].url}}"></image>
         <view class="vr_store w710 flex">
             <view class="store__cont flex">
                 <view class="store_left">

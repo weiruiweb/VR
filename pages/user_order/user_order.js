@@ -24,9 +24,9 @@ Page({
       token.getUserInfo();
     };
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
-    self.changeSearch(self.data.num);
 
-    self.getMainData();
+      self.changeSearch(self.data.num);
+
     self.setData({
       img:app.globalData.img
     })

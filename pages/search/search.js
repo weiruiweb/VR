@@ -60,6 +60,7 @@ Page({
       create_time:'normal'
     }
     const callback = (res)=>{
+
       if(res.info.data.length>0){
         self.data.labelData.push.apply(self.data.labelData,res.info.data);
       }else{
@@ -74,20 +75,30 @@ Page({
     api.labelGet(postData,callback);   
   },
 
+
+
   changeBind(e){
     const self = this;
     api.fillChange(e,self,'sForm');
     console.log(self.data.sForm);
-    if(self.data.sForm.item){
-      self.data.searchItem.title = ['LIKE',['%'+self.data.sForm.item+'%']],
-      self.data.searchItemOr.description = ['LIKE',['%'+self.data.sForm.item+'%']],
-      self.data.labelData = [],
-      self.getLabelData(true)
-    }else if(self.data.sForm.item==''){
-      delete self.data.searchItem.title,
-      delete self.data.searchItemOr.description,
-      self.data.labelData = [],
-      self.getLabelData(true)
+    self.setData({
+      web_sForm:self.data.sForm
+    })
+  },
+
+  search(){
+    const self = this;
+    console.log('self.data.sForm.item',self.data.sForm.item)
+    self.data.labelData = [];
+    if(self.data.sForm.item){ 
+      console.log(666) 
+      self.data.searchItem.title =  ['LIKE',['%'+self.data.sForm.item+'%']],
+      self.getLabelData(true,self.data.sForm.item);
+      
+    }else{
+      delete self.data.searchItem.title;
+      console.log(666) 
+      self.getLabelData()
     }
   },
 
@@ -105,10 +116,12 @@ Page({
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'nav');
   },
+
   intoPathRedirect(e){
     const self = this;
     api.pathTo(api.getDataSet(e,'path'),'redi');
   }, 
+
 })
 
   

@@ -57,7 +57,7 @@
                     </view>
                 </view>
                 <view class="credit_right font28 color2  color_this">
-                    2小时
+                    {{item.count}}	
                 </view>
             </view>
         </view>

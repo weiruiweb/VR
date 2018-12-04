@@ -77,7 +77,7 @@ page{
 	justify-content:center;
 }
 .credit_reson{
-	color:#444;
+	
 }
 .credit_left{
 	width:50%;

@@ -260,7 +260,7 @@ Page({
           const payCallback=(payData)=>{
             if(payData==1){
               setTimeout(function(){
-                api.pathTo('/pages/user_order/user_order','redi');
+                api.pathTo('/pages/user/user','rela');
               },800)  
             };   
           };
@@ -268,7 +268,7 @@ Page({
         }else{
           api.showToast('支付成功','none');
           setTimeout(function(){
-            api.pathTo('/pages/user_order/user_order','redi');
+            api.pathTo('/pages/user/user','rela');
           },800);
         };
       }else{

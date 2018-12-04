@@ -172,8 +172,9 @@ Page({
       };
       
       console.log('countPrice_self.data.price',self.data.price);
-      
-      if(self.data.cardData[self.data.index].balance>=self.data.price){
+      console.log('countPrice_self.data',self.data.cardData[self.data.index]);
+      var cardBalance = parseFloat(self.data.cardData[self.data.index].balance);
+      if(cardBalance>=self.data.price){
         self.data.pay.card = {
           card_no:self.data.cardData[self.data.index].order_no,
           price:self.data.price
@@ -189,7 +190,7 @@ Page({
         console.log('555')
         self.data.pay.card = {
           card_no:self.data.cardData[self.data.index].order_no,
-          price:self.data.cardData[index].balance,
+          price:cardBalance,
         };
         self.data.pay.discount = self.data.price;
         self.data.pay.wxPay = self.data.mainData.products[0].snap_product.vipPrice - self.data.pay.card.vipPrice - self.data.pay.discount;

@@ -74,10 +74,14 @@
 					{{web_mainData.description}}
 				</view>
 				
-				<view class="font24 color2">
-				￥{{web_skuData.price?web_skuData.price:web_mainData.price}}
+				<view class="font24 color2 flex">
+					<view class="color2">非会员价:￥{{web_skuData.price?web_skuData.price:web_mainData.price}}|
+					</view>
+					<view class="color2">
+						会员价:{{web_skuData.vipPrice?web_skuData.vipPrice:web_mainData.price}}元
+					</view>
 				</view>
-				<view class="font26 color2">会员价格:{{web_skuData.vipPrice?web_skuData.vipPrice:web_mainData.price}}元|预定价:{{web_skuData.reservaPrice?web_skuData.reservaPrice:web_mainData.price}}</view>
+				<view class="font26 color2">预约金:{{web_skuData.reservaPrice?web_skuData.reservaPrice:web_mainData.price}}</view>
 			</view>
 			<view class="close" bindtap="close">
 			<view style="width:19px;height:19px;{{img}};background-position:-270px 0;"></view>

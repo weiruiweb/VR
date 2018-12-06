@@ -42,12 +42,12 @@
                         <view class="font24 product_top">{{web_mainData.description}}</view>
                     </view>
                 </view>
-                <view class="font30 color6 product_price flex">¥{{web_mainData.price}}</view>
+                <view class="font30 color6 product_price flex">{{web_mainData.price}}</view>
             </view>
         </view>
     </view>
 </view>
 <view class="confirm_btn flex font30">
-   <view class="confirm_left">合计: ¥{{web_mainData.price}}</view> 
+   <view class="confirm_left">合计: {{web_mainData.price}}</view> 
    <view class="confirm_right color1" bindtap="{{!buttonClicked?'addOrder':''}}">提交订单</view> 
 </view>

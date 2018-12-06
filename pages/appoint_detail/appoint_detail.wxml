@@ -38,9 +38,9 @@
             <view class="account_left">预约价格</view>
             <view class="account_left account_right">¥{{web_mainData.products[0].snap_product.reservaPrice}}</view>
         </view>
-        <view class="user_infor" style="height: 120rpx; text-align:right;border: none;">
+        <view class="user_infor" style="height: 180rpx; text-align:right;border: none;">
              <view wx:if="{{web_pay.wxPay}}"><text class="color2">微信实付款¥{{web_pay.wxPay}}</text></view>
-             <view wx:if="{{web_pay.card.price}}"><text class="color2">卡内积分支付¥{{web_pay.card.price}}</text></view>
+             <view wx:if="{{web_pay.card.price}}"><text class="color2">卡内余额支付¥{{web_pay.card.price}}</text></view>
              <view wx:if="{{web_pay.other.price}}"><text class="color2">优惠抵扣金额¥{{web_pay.other.price}}</text></view>
         </view>
         
@@ -49,7 +49,7 @@
     <view>可用会员卡</view>
     <!--   <block wx:for="{{web_cardData}}" wx:key="id">
     <view bindtap="chooseCard" data-index="{{index}}" style="{{web_index==index?'color:red':''}}">
-      名称:{{item.products[0].snap_product.title}}  剩余积分 :{{item.balance}} 折扣:{{item.discount/10}}折
+      名称:{{item.products[0].snap_product.title}}  剩余余额 :{{item.balance}} 折扣:{{item.discount/10}}折
     </view> -->
     
     <block wx:for="{{web_cardData}}" wx:key="id">
@@ -58,7 +58,7 @@
           <view class="member_cont w710">
               <view class="member_type flex">
                   <view class="type_left">{{item.products[0].snap_product.title}}</view>
-                  <view class="type_left type_right color2">剩余积分：{{item.balance}}</view>
+                  <view class="type_left type_right color2">余额：{{item.balance}}</view>
               </view>
               <view class="member_detail font28 flex">
                 <view class="color2 discount_num">{{item.discount/10}}</view>

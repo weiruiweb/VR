@@ -140,7 +140,7 @@
             <view class="recommend_left" bindtap="intoPath" data-path="/pages/index_detail/index_detail?id={{item.id}}">
                 <image src="{{item.mainImg[0].url}}"></image>
                 <view class="product_name1 font30 avoidOverflow color_this">{{item.title}}</view>
-                <view class="product_pro font28"><text class="color">¥{{item.price}}</text>积分</view>
+                <view class="product_pro font28"><text class="color">{{item.price}}</text>积分</view>
             </view>
           </block>
         </view>

@@ -10,6 +10,7 @@ Page({
     searchItem:{
       type:3,
       pay_status:1,
+      balance:['>',0]
     }
   },
   //事件处理函数

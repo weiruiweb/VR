@@ -34,6 +34,10 @@
             <view class="user_icon" style="{{img}};background-position: 0px -30px;"></view>
             <text>我的积分</text>
         </view>
+        <view class="user_infor flex"  bindtap="intoPath" data-path="/pages/cashFlow/cashFlow">
+            <view class="user_icon" style="{{img}};background-position: 0px -30px;"></view>
+            <text>现金流水</text>
+        </view>
         <view class="user_infor flex" bindtap="intoPath" data-path="/pages/user_exchange/user_exchange">
             <view class="user_icon" style="{{img}};background-position: -80px -30px;"></view>
             <text>我的兑换</text>

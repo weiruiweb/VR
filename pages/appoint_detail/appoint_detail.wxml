@@ -68,6 +68,7 @@
       </view>
     </block>
 </view>
+<view style="width:100%;height:160rpx;"></view>
 <view class="confirm_btn flex font30">
    <view class="confirm_left color2">{{web_isReserve?'预约金':''}}合计支付: ¥{{web_price}}</view> 
    <view class="confirm_right color1 bg1" bindtap="{{!buttonClicked?'pay':''}}">提交订单</view> 

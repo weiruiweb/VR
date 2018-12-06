@@ -11,8 +11,9 @@
                 </view>
                 <view class="member_detail font28">{{item.description}}</view>
                 <view class="date font26">
-                    <text>有效期</text><text>{{func.SecondToDate(item.standard)}}</text>
-                </view>
+                      <text>有效期</text><text>{{func.SecondToDate(item.standard)}}</text>
+                      <text>面值</text><text class="color2">{{item.balance}}</text>
+                  </view>
             </view>
         </view>
     </block>

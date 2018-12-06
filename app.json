@@ -20,8 +20,8 @@
     "pages/confirm_order/confirm_order",
     "pages/index_relation/index_relation",
     "pages/index_relation_detail/index_relation_detail",
-    "pages/index_detail1/index_detail1"
-
+    "pages/index_detail1/index_detail1",
+    "pages/cashFlow/cashFlow"
   ],
   "window": {
     "backgroundTextStyle": "light",

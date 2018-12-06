@@ -8,12 +8,12 @@ Page({
   data: {
 
     mainData:[],
-    userData:[],
     startTime:'',
     endTime:'',
     searchItem:{
-      type:3,
-      status:1
+      type:1,
+      status:1,
+      count:['<',0]
     },
     complete_api:[],
   },
@@ -27,7 +27,7 @@ Page({
     });
     self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getMainData();
-    self.getUserInfoData()
+
   },
 
   intoPath(e){
@@ -49,22 +49,6 @@ Page({
   },
 
 
-  getUserInfoData(){
-    const self = this;
-    const postData = {};
-    postData.token = wx.getStorageSync('token');
-    const callback = (res)=>{
-      if(res.info.data.length>0){
-        self.data.userData = res;
-        self.data.complete_api.push('getUserInfoData')
-      }
-      self.setData({
-        web_userData:self.data.userData,
-      });
-      self.checkLoadComplete();
-    };
-    api.userInfoGet(postData,callback);   
-  },
 
   
 
@@ -82,15 +66,26 @@ Page({
     };
     postData.getAfter = {
       order:{
-        tableName:'orderItem',
+        tableName:'OrderItem',
         middleKey:'order_no',
         key:'order_no',
         searchItem:{
-          status:1
+          user_no:wx.getStorageSync('info').user_no
         },
-        condition:'='
+        condition:'in',
+        info:['product_id']
+      },
+       product:{
+        tableName:'product',
+        middleKey:['order','product_id'],
+        key:'id',
+        searchItem:{
+         status:1
+        },
+        condition:'in'
       }
     };
+    
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.mainData.push.apply(self.data.mainData,res.info.data);
@@ -126,7 +121,8 @@ Page({
     this.setData({
       ['web_'+label]: e.detail.value
     });
-    self.data[label+'stap'] = new Date(self.data.date+' '+e.detail.value).getTime()/1000;
+    self.data[label+'stap'] = api.timestampToTime(new Date(self.data.date+' '+e.detail.value));
+  
     if(self.data.endTimestap&&self.data.startTimestap){
       self.data.searchItem.create_time = ['between',[self.data.startTimestap,self.data.endTimestap]];
     }else if(self.data.startTimestap){
@@ -139,7 +135,7 @@ Page({
 
   checkLoadComplete(){
     const self = this;
-    var complete = api.checkArrayEqual(self.data.complete_api,['getMainData','getUserInfoData']);
+    var complete = api.checkArrayEqual(self.data.complete_api,['getMainData']);
     if(complete){
       wx.hideLoading();
     };
@@ -148,4 +144,5 @@ Page({
 
 
 })
+
   

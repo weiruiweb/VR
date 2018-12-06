@@ -12,7 +12,8 @@ Page({
     endTime:'',
     searchItem:{
       type:3,
-      status:1
+      status:1,
+      count:['<',0]
     },
     complete_api:[],
   },

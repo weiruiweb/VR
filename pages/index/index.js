@@ -7,6 +7,7 @@ const token = new Token();
 
 Page({
   data: {
+    articleData:[],
     scoreData:[],
     labelData:[],
     productData:[],
@@ -31,6 +32,7 @@ Page({
     self.getLabelData();
     self.getProductData();
     self.getScoreData();
+    self.getArticleData();
     self.setData({
       img:app.globalData.img,
     })
@@ -137,28 +139,15 @@ Page({
     const postData = {};
     postData.searchItem = {
       thirdapp_id:getApp().globalData.thirdapp_id,
-      type:1,
+      type:2,
+      discount:100
     };
     postData.order = {
       listorder:'desc'
     };
-    postData.getBefore = {
-      label:{
-        tableName:'label',
-        searchItem:{
-          title:['=',['积分兑换商品']],
-        },
-        middleKey:'category_id',
-        key:'id',
-        condition:'NOT IN'
-      },
-    };
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.productData.push.apply(self.data.productData,res.info.data);
-        if(res.info.data.length>2){
-          self.data.productData = self.data.productData.slice(0,2) 
-        }
       }else{
         api.showToast('暂无活动商品','none');
       }
@@ -169,6 +158,40 @@ Page({
       });
     };
     api.productGet(postData,callback);   
+  },
+
+  getArticleData(){
+    const self = this;
+    const postData = {};
+    postData.searchItem = {
+      thirdapp_id:getApp().globalData.thirdapp_id,
+    };
+    postData.getBefore = {
+      label:{
+        tableName:'label',
+        searchItem:{
+          title:['=',['热门活动']],
+          thirdapp_id:['=',[getApp().globalData.thirdapp_id]],
+        },
+        middleKey:'menu_id',
+        key:'id',
+        condition:'in',
+      },
+    };
+    postData.order = {
+      create_time:'normal'
+    }
+    const callback = (res)=>{
+      if(res.info.data.length>0){
+        self.data.articleData.push.apply(self.data.articleData,res.info.data)
+      }else{
+        api.showToast('暂无热门活动','none');
+      }
+      self.setData({
+        web_articleData:self.data.articleData
+      })
+    };
+    api.articleGet(postData,callback);   
   },
 
   inputChange(e){

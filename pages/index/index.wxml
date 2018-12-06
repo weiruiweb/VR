@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<wxs module="func" src="../../utils/func.wxs" />
 <view class="page-body">
     <view class="page-section page-section-spacing swiper">
       <swiper autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px" bindchange="swiperChange">
@@ -43,11 +44,38 @@
     <view class="bg">
         <view class="title flex">
             <view class="mall_tlt font30" style="{{img}};background-position:-126px -100px;">
+               热门卡
+            </view>
+        </view>
+      </view>
+        <block wx:for="{{web_productData}}" wx:key="id">
+          <view class="member" bindtap="intoPath" data-path="/pages/member_detail/member_detail?id={{item.id}}" >
+              <image src="/images/member_bg.png"></image>
+              <view class="member_cont w710">
+                  <view class="member_type flex">
+                      <view class="type_left">{{item.title}}</view>
+                      <view class="type_left type_right color2">¥{{item.price}}</view>
+                  </view>
+                  <view class="member_detail font28">{{item.description}}</view>
+                  <view class="date font26">
+                      <text>有效期</text><text>{{func.SecondToDate(item.standard)}}</text>
+                      <text>面值</text><text class="color2">{{item.balance}}</text>
+                  </view>
+              </view>
+          </view>
+        </block>
+    
+</view>
+<view class="content_box w710">
+    <view class="bg">
+        <view class="title flex">
+            <view class="mall_tlt font30" style="{{img}};background-position:-126px -100px;">
                热门活动
             </view>
         </view>
-        <block wx:for="{{web_productData}}" wx:key="id">
-          <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/detail/detail?id={{item.id}}">
+      </view>
+        <block wx:for="{{web_articleData}}" wx:key="id">
+          <view class="product flexRowBetween w710" bindtap="intoPath" data-path="/pages/index_relation_detail/index_relation_detail?id={{item.id}}">
               <view class="product_box flexRowBetween">
                   <view class="product_left">
                       <image src="{{item.mainImg[0].url}}"></image>
@@ -65,7 +93,7 @@
               </view>
           </view>
         </block>
-    </view>
+    
 </view>
 <view class="w710">
   <view class="recommend1 flexRowBetween">

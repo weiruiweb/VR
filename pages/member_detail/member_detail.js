@@ -105,6 +105,23 @@ Page({
       wxPay:self.data.mainData.price,
       wxPayStatus:0
     };
+    
+    postData.payAfter = [];
+    if(self.data.mainData.passage1&&self.data.mainData.passage1>0){
+      postData.payAfter.push(
+        {
+          tableName:'FlowLog',
+          FuncName:'add',
+          data:{
+            count:self.data.mainData.passage1,//62.5%
+            trade_info:'购买会员卡赠送',
+            user_no:wx.getStorageSync('info').user_no,
+            type:3,
+            thirdapp_id:getApp().globalData.thirdapp_id
+          }
+        }
+      );
+    }
     const callback = (res)=>{
       wx.hideLoading();
       if(res.solely_code==100000){

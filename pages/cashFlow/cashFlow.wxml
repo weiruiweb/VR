@@ -1,21 +1,4 @@
 <!--index3.wxml-->
-<view class="credit w710 flex">
-    <view class="credit_cont flex">
-        <view class="credit_user">
-            <view class="user_img">
-              <open-data type="userAvatarUrl"></open-data>
-            </view>
-        </view>
-        <view class="credit_infor">
-            <view class="font30 color3"><open-data type="userNickName" lang="zh_CN"></open-data></view>
-
-        </view>
-        <view class="credit_number color2">
-            积分:{{web_userData.info.data[0].score}}  
-        </view>
-    </view>
-</view>
-
 <view class="date font30">
     <view class="date_item">
         <view style="width:45%;display:flex;align-items:center;">
@@ -44,12 +27,12 @@
                 <picker  mode="date" value="{{web_endTime}}" data-type="endTime" bindchange="bindTimeChange" >
                     <view style="display:flex;align-items:center;width:100%;">
                         <view style="width:85%;height:70rpx;">
-                            <view class="picker text color_this">
+                            <view class="picker text  color_this">
                               截至日期
                             </view>
                             <view class="text  font22 color_this" >{{web_endTime}}</view>
                         </view>
-                        <view style="width:15%;height:70rpx;" class="flex">
+                        <view style="width:15%;height:70rpx;"  class="flex">
                             <view class="credit_icon" style="{{img}};background-position:-166px -30px;"></view>
                         </view>
                     </view>
@@ -59,13 +42,15 @@
         </view> 
     </view> 
 </view>
+    
+
 <view class="credit_cont">
     <block wx:for="{{web_mainData}}" wx:key="id">
         <view class="credit_list">
             <view class="credit_item">
                 <view class="credit_left">
                     <view class="credit_reson font28" style="color:#e5e5e5;">
-                        {{item.order.length>0?item.order[0].snap_product.title:item.trade_info}}
+                        {{item.product[0].title}}
                     </view>
                     <view class="credit_dates font24 color9">
                         {{item.create_time}}

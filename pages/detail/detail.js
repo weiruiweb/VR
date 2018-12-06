@@ -45,6 +45,13 @@ Page({
     });
   },
 
+  swiperChange(e) {
+    const self = this;
+    self.setData({
+      swiperIndex: e.detail.current,
+    })
+  },
+
   getMainData(){
     const self = this;
     const postData = {};

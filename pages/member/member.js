@@ -10,7 +10,9 @@ Page({
     mainData:[],
     searchItem:{
       thirdapp_id:getApp().globalData.thirdapp_id,
-      type:2
+      type:2,
+      discount:['>',0],
+      discount:['<',100]
     }
   },
   //事件处理函数

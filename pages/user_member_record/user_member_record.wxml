@@ -50,7 +50,7 @@
             <view class="credit_item">
                 <view class="credit_left">
                     <view class="credit_reson font28  color_this">
-                        VR体验馆
+                        {{item.orderItem[0].snap_product.product.title}}
                     </view>
                     <view class="credit_dates font24 color9  color_this">
                         {{item.create_time}}

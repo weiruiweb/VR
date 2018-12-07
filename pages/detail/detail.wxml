@@ -11,7 +11,6 @@
           </swiper-item>
         </block>
       </swiper>
-      
     </view>
 </view>
 
@@ -66,7 +65,7 @@
 	<view class="w710" style="padding-top: 20rpx;">
 		<view class="flexRowBetween pricity">
 			<view class="choose_pro">
-				<image src="/images/product.png"></image>
+				<image src="{{web_mainData.mainImg[0].url}}"></image>
 			</view>
 			<view class="product_txt">
 				<view class="font28">{{web_mainData.title}}</view>

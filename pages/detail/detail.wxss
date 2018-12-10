@@ -291,3 +291,7 @@ button::after{
 .button-hover {
 	background: none;
 }
+.order_up image{
+	width:28rpx;
+	height:18rpx;
+}

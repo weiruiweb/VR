@@ -18,7 +18,7 @@
 	<view class="product_top">
 		<view class="price_sale flex">
 			<view class="price">
-				￥{{web_mainData.price}}元 
+				预约金：￥{{web_mainData.price}}元 
 			</view>
 		</view>
 		<view class="product_name avoidOverflow color1">
@@ -89,8 +89,13 @@
 		<view id="date">
 			<view class="flexRowBetween">
 				<picker mode="date" value="{{web_selectData}}" start="1999-09-01" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
-					<view class="picker font28" >
-					预约日期: {{func.timestampToTime(web_selectData)}}
+					<view class="flex">
+						<view class="picker font28" style="width:43%;">
+						预约日期: {{func.timestampToTime(web_selectData)}}
+						</view>
+						<view class="order_up" style="width:30%;">
+							<image src="/images/order_up.png"></image>
+						</view>
 					</view>
 				</picker>
 				

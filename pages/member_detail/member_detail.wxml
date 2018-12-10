@@ -30,7 +30,7 @@
 </view>
 <view class="confirm_btn flex font30">
    <view class="confirm_left color2">合计: ¥{{web_mainData.price}}</view> 
-   <view class="confirm_right color1 bg1" bindtap="addOrder">提交订单</view> 
+   <button class="confirm_right color1 bg1"  open-type="getUserInfo" bindgetuserinfo="addOrder" style="border-radius:0;font-size:30rpx;line-height:3.55555556">提交订单</button> 
 </view>
 
 

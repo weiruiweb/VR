@@ -57,39 +57,41 @@ Page({
 
   addOrder(){
     const self = this;
+      const callback = (user,res) =>{
+        if(!self.data.order_id){
+          const postData = {
+            token:wx.getStorageSync('token'),
+            product:[
+              {id:self.data.id,count:1}
+            ],
+            type:3,
+            data:{
+              balance:self.data.mainData.balance,
+              discount:self.data.mainData.discount,
+              ratio:self.data.mainData.ratio,
+              standard:parseInt(Date.parse(new Date()))+parseInt(self.data.mainData.standard),  
+            }
 
-    if(!self.data.order_id){
-      const postData = {
-        token:wx.getStorageSync('token'),
-        product:[
-          {id:self.data.id,count:1}
-        ],
-        type:3,
-        data:{
-        	balance:self.data.mainData.balance,
-	        discount:self.data.mainData.discount,
-          ratio:self.data.mainData.ratio,
-	        standard:parseInt(Date.parse(new Date()))+parseInt(self.data.mainData.standard),	
-        }
-
+          };
+          console.log(parseInt(Date.parse(new Date()))+parseInt(self.data.mainData.standard))
+          const callback = (res)=>{
+            if(res&&res.solely_code==100000){
+              setTimeout(function(){
+                self.data.buttonClicked = false;
+              },1000);
+              self.data.order_id = res.info.id
+              self.pay(self.data.order_id);         
+            }else if(res.msg=="库存不足"){
+              api.showToast('商品库存不足','none')
+            } 
+          };
+          api.addOrder(postData,callback);
+        }else{
+          self.pay(self.data.order_id);
+        };      
       };
-      console.log(parseInt(Date.parse(new Date()))+parseInt(self.data.mainData.standard))
-      const callback = (res)=>{
-        if(res&&res.solely_code==100000){
-          setTimeout(function(){
-            self.data.buttonClicked = false;
-          },1000);
-          self.data.order_id = res.info.id
-          self.pay(self.data.order_id);         
-        }else if(res.msg=="库存不足"){
-        	api.showToast('商品库存不足','none')
-        }	
-      };
-      api.addOrder(postData,callback);
-    }else{
-      self.pay(self.data.order_id);
-    };   
-  },
+      api.getAuthSetting(callback); 
+    },
 
 
 

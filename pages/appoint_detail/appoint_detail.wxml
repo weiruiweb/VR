@@ -35,12 +35,12 @@
             <view class="account_left account_right" style="width:75%;">{{web_mainData.passage1}}</view>
         </view>
         <view class="user_infor flex" bindtap="test">
-            <view class="account_left">预约价格</view>
+            <view class="account_left">预约金</view>
             <view class="account_left account_right">¥{{web_mainData.products[0].snap_product.reservaPrice}}</view>
         </view>
         <view class="user_infor" style="height: 180rpx; text-align:right;border: none;">
              <view wx:if="{{web_pay.wxPay}}"><text class="color2">微信实付款¥{{web_pay.wxPay}}</text></view>
-             <view wx:if="{{web_pay.card.price}}"><text class="color2">卡内余额支付¥{{web_pay.card.price}}</text></view>
+             <view wx:if="{{web_pay.card.price||web_pay.card.price==0}}"><text class="color2">卡内余额支付¥{{web_pay.card.price}}</text></view>
              <view wx:if="{{web_pay.other.price}}"><text class="color2">优惠抵扣金额¥{{web_pay.other.price}}</text></view>
         </view>
         
@@ -71,7 +71,7 @@
 <view style="width:100%;height:160rpx;"></view>
 <view class="confirm_btn flex font30">
    <view class="confirm_left color2">{{web_isReserve?'预约金':''}}合计支付: ¥{{web_price}}</view> 
-   <view class="confirm_right color1 bg1" bindtap="{{!buttonClicked?'pay':''}}">提交订单</view> 
+   <button class="confirm_right color1 bg1"  bindgetuserinfo="{{!buttonClicked?'submit':''}}" open-type="getUserInfo" style="border-radius:0;font-size:30rpx;line-height:3.55555556">提交订单</button> 
 </view>
 
 

@@ -49,5 +49,5 @@
 </view>
 <view class="confirm_btn flex font30">
    <view class="confirm_left">合计: {{web_mainData.price}}</view> 
-   <view class="confirm_right color1" bindtap="{{!buttonClicked?'addOrder':''}}">提交订单</view> 
+   <button class="confirm_right color1" bindgetuserinfo="{{!buttonClicked?'submit':''}}" open-type="getUserInfo" style="border-radius:0;font-size:30rpx;line-height:3.55555556">提交订单</button> 
 </view>

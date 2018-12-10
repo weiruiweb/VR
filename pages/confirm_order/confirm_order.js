@@ -80,11 +80,7 @@ Page({
 
   addOrder(){
     const self = this;
-    
-   if(!self.data.order_id){
-      self.setData({
-        buttonClicked: true
-      });
+    if(!self.data.order_id){
       const postData = {
         token:wx.getStorageSync('token'),
         product:[
@@ -121,7 +117,16 @@ Page({
     }   
   },
 
-
+  submit(){
+    const self = this;
+    self.setData({
+      buttonClicked: true
+    });
+    const callback =(res)=>{
+      self.addOrder()
+    };
+    api.getAuthSetting(callback); 
+  },
 
   pay(order_id){
     const self = this;

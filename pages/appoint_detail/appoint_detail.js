@@ -89,6 +89,17 @@ Page({
 
   },
 
+  submit(){
+    const self = this;
+    self.setData({
+      buttonClicked: true
+    });
+    const callback =(res)=>{
+      self.pay()
+    };
+    api.getAuthSetting(callback); 
+  },
+
   getLabelData(){
 
     const self = this;
@@ -214,6 +225,12 @@ Page({
       self.setData({
         web_ratio:1
       })
+    };  
+    if(self.data.price<0){
+      self.data.price=0
+    };
+    if(self.data.pay.card&&self.data.pay.card.price&&self.data.pay.card.price<0){
+      self.data.pay.card.price=0
     };
     console.log('self.data.price',parseFloat(self.data.mainData.products[0].snap_product.price))
     console.log('self.data.price',self.data.hasPay)

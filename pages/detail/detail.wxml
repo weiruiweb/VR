@@ -103,11 +103,8 @@
 			<view class="date_time flex">
 				<view class="time_left font28">预约时间</view>
 				<view class="time_right flex">
-					<!-- <block wx:for="{{web_mainData.sku}}" wx:key="id">
-						<view class="time1" style="{{web_chooseId==item.id?'background:#3ab3c3;color:#fff':''}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
-					</block> -->
 					<block wx:for="{{web_mainData.sku}}" wx:key="id">
-						<view class="time1" style="{{item.stock>0?(web_chooseId==item.id?'background:#3ab3c3;color:#fff':''):'background:rgba(153,153,153,0.5);color:#fff'}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
+						<view class="time1" style="{{item.stock>0?(web_chooseId==item.id?'background:#3ab3c3;color:#fff':''):'background:rgba(153,153,153,0.2);color:#666'}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
 					</block>
 				</view>
 			</view>

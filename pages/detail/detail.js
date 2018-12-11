@@ -84,6 +84,7 @@ Page({
     const callback = (res)=>{
       if(res.info.data.length>0){
         self.data.mainData = res.info.data[0]
+        console.log(956,self.data.mainData);
         for (var i = 0; i < self.data.mainData.sku.length; i++) {
           for (var j = 0; j < self.data.mainData.skuToday.length; j++) {
             if(self.data.mainData.sku[i]['sku_item'][0]==self.data.mainData.skuToday[j]['sku_item'][0]){

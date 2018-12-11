@@ -295,3 +295,11 @@ button::after{
 	width:28rpx;
 	height:18rpx;
 }
+.time_select{
+	background:#3ab3c3;
+	color:#fff
+}
+.time_no{
+	backgroud:#999;
+	color:#999;
+}

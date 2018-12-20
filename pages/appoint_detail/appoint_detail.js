@@ -153,10 +153,13 @@ Page({
   chooseCard(e){
     const self = this;
     var index = api.getDataSet(e,'index');
+    var isMember = api.getDataSet(e,'member');
     if(index==self.data.index){
       self.data.index = -1;
+      self.data.type = -1;
     }else{
       self.data.index = index;
+      self.data.isMember = isMember;
     };
     self.countPrice();      
     
@@ -178,6 +181,8 @@ Page({
 
       if(self.data.isReserve){
         self.data.price = self.data.mainData.products[0].snap_product.reservaPrice;
+      }else if(self.data.isMember=='false'){
+        self.data.price = (self.data.mainData.products[0].snap_product.price*ratio + self.data.hasPay).toFixed(2);
       }else{
         self.data.price = (self.data.mainData.products[0].snap_product.vipPrice*ratio + self.data.hasPay).toFixed(2);
       };
@@ -191,10 +196,17 @@ Page({
           price:self.data.price
         };
         if(!self.data.isReserve){
-          self.data.pay.other = {
-            price:(self.data.mainData.products[0].snap_product.price - self.data.mainData.products[0].snap_product.vipPrice*ratio).toFixed(2),
-            msg:self.data.cardData[self.data.index].order_no+'会员卡折扣'
-          };
+          if(self.data.isMember=='false'){
+            self.data.pay.other = {
+              price:(self.data.mainData.products[0].snap_product.price - self.data.mainData.products[0].snap_product.price*ratio).toFixed(2),
+              msg:self.data.cardData[self.data.index].order_no+'会员卡折扣'
+            }; 
+          }else{
+            self.data.pay.other = {
+              price:(self.data.mainData.products[0].snap_product.price - self.data.mainData.products[0].snap_product.vipPrice*ratio).toFixed(2),
+              msg:self.data.cardData[self.data.index].order_no+'会员卡折扣'
+            }; 
+          } 
         };
       }else if(!self.data.isReserve){ 
         
@@ -263,7 +275,7 @@ Page({
           tableName:'FlowLog',
           FuncName:'add',
           data:{
-            count:(self.data.cardData[self.data.index].ratio*self.data.mainData.products[0].snap_product.vipPrice).toFixed(2)/100,
+            count:(self.data.cardData[self.data.index].ratio*self.data.pay.card.price).toFixed(2)/100,
             trade_info:'会员消费返积分',
             user_no:wx.getStorageSync('info').user_no,
             type:2,

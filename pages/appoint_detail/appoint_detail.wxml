@@ -53,7 +53,7 @@
     </view> -->
     
     <block wx:for="{{web_cardData}}" wx:key="id">
-      <view class="member" bindtap="chooseCard" data-index="{{index}}">
+      <view class="member" bindtap="chooseCard" data-index="{{index}}" data-member="{{item.member}}">
           <image src="{{web_index==index?'/images/member_bg.png':'/images/member_bg1.jpg'}}"></image>
           <view class="member_cont w710">
               <view class="member_type flex">

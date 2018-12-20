@@ -88,7 +88,7 @@
 		</view>
 		<view id="date">
 			<view class="flexRowBetween">
-				<picker mode="date" value="{{web_selectData}}" start="1999-09-01" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
+				<picker mode="date" value="{{web_selectData}}" start="{{func.timestampToTime(web_selectData)}}" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
 					<view class="flex">
 						<view class="picker font28" style="width:43%;">
 						预约日期: {{func.timestampToTime(web_selectData)}}
@@ -104,12 +104,12 @@
 				<view class="time_left font28">预约时间</view>
 				<view class="time_right flex">
 					<block wx:for="{{web_mainData.sku}}" wx:key="id">
-						<view class="time1" style="{{item.stock>0?(web_chooseId==item.id?'background:#3ab3c3;color:#fff':''):'background:rgba(153,153,153,0.2);color:#666'}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
+						<view class="time1" style="{{item.stock>0?(web_chooseId==item.id?'background:#3ab3c3;color:#fff':''):'background:rgba(153,153,153,0.2);color:#666;border:1px dashed #3ab3c3'}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
 					</block>
 				</view>
 			</view>
 		</view>
 	</view>
-	<button class="submit_info" bindtap="addOrder" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
+	<button class="submit_info" bindtap="{{web_buttonCanClick?'addOrder':''}}" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
 </view>
 

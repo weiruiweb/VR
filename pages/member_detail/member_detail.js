@@ -69,7 +69,8 @@ Page({
               balance:self.data.mainData.balance,
               discount:self.data.mainData.discount,
               ratio:self.data.mainData.ratio,
-              standard:parseInt(Date.parse(new Date()))+parseInt(self.data.mainData.standard),  
+              standard:parseInt(Date.parse(new Date()))+parseInt(self.data.mainData.standard),
+              member:self.data.mainData.member
             }
 
           };

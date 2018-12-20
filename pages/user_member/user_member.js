@@ -10,7 +10,9 @@ Page({
     searchItem:{
       type:3,
       pay_status:1,
-      balance:['>',0]
+      balance:['>',0],
+      standard:['>',Date.parse(new Date())],
+ 
     }
   },
   //事件处理函数

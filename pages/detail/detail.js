@@ -25,19 +25,27 @@ Page({
     web_skuLabel:{},
     selectData:'',
     skuToday:[],
-    chooseId:''
+    chooseId:'',
+    buttonCanClick:true,
+    orderNum:0
   },
   //事件处理函数
  
   onLoad(options) {
     const self = this;
+    self.setData({
+      web_buttonCanClick:self.data.buttonCanClick
+    });
     self.data.id = options.id;
     wx.showShareMenu({
       withShareTicket: true
     });
     self.data.selectData = new Date(new Date().toLocaleDateString()).getTime();
     self.getMainData();
-    
+    self.data.hour = new Date().getHours();  
+    self.data.minutes = new Date().getMinutes();
+    console.log('self.data.hour',self.data.hour);
+    console.log('self.data.minutes',self.data.minutes);
     console.log(new Date(new Date().toLocaleDateString()).getTime())
     self.setData({
       web_selectData:new Date(new Date().toLocaleDateString()).getTime(),
@@ -79,7 +87,8 @@ Page({
           behavior:['in',[0]],
           deadline:['between',[self.data.selectData/1000,(self.data.selectData/1000+86400)]]
         },
-      } 
+      },
+
     };
     const callback = (res)=>{
       if(res.info.data.length>0){
@@ -104,7 +113,7 @@ Page({
       };
       self.data.mainData.sku.push.apply(self.data.mainData.sku,self.data.mainData.skuToday);
       wx.hideLoading();
-      self.data.chooseId = self.data.mainData.sku[0].id;
+      //self.data.chooseId = self.data.mainData.sku[0].id;
       console.log('labelId',self.data.mainData.label[self.data.mainData.category_id].id)
       self.data.mainData.content = api.wxParseReturn(res.info.data[0].content).nodes;
       self.setData({
@@ -115,7 +124,7 @@ Page({
         web_labelId:self.data.mainData.label[self.data.mainData.category_id].id
       });  
         console.log(999,self.data.mainData);
-       self.getSkuData()
+       //self.getSkuData()
       }else{
         api.showToast('数据有误','error');
         setTimeout(function(){
@@ -142,15 +151,30 @@ Page({
       if(res.info.data.length>0){
         self.data.title = res.info.data[0].title
       };
-     
-    }
+      if(self.data.orderNum==0){
+        self.getSkuData();
+        self.data.orderNum = 1;
+      };
+      
+    };
     api.labelGet(postData,callback);
   },
 
   choose(e){
     const self = this;
-    self.data.chooseId = api.getDataSet(e,'id');
+    
     self.data.title = api.getDataSet(e,'title');
+ 
+    var chooseTime = (self.data.title.split('-')[0]).split(':');
+    self.data.chooseHour = parseInt(chooseTime[0]);
+    self.data.chooseMinutes = parseInt(chooseTime[1]);
+    if(self.data.chooseHour<self.data.hour||(self.data.chooseHour==self.data.hour&&self.data.chooseMinutes<self.data.minutes)){
+      api.showToast('该场次暂停预约','none');
+      return;
+    };
+    self.data.chooseId = api.getDataSet(e,'id');
+    console.log('self.data.chooseHour',self.data.chooseHour)
+    console.log('self.data.chooseMinutes',self.data.chooseMinutes)
     self.setData({
       web_chooseId:self.data.chooseId
     });
@@ -164,24 +188,62 @@ Page({
       thirdapp_id:getApp().globalData.thirdapp_id,
       id:self.data.chooseId
     };
-
+    postData.getAfter = {
+      order:{
+        tableName:'order',
+        middleKey:'id',
+        key:'express_info',
+        searchItem:{
+          status:1,
+          behavior:1,
+          passage1:api.timestampToTime(parseInt(self.data.selectData))+self.data.title
+        },
+        condition:'='
+      }
+    }
     const callback = (res)=>{
       if(res.info.data.length>0){
+        self.data.dayLimit = res.info.data[0].order.length;
         self.data.skuData = res.info.data[0]
       }else{
         api.showToast('数据错误','none')
       };
-      
       self.setData({
         web_skuData:self.data.skuData,
-      });   
-      self.getLabelData()
+      }); 
+      if(self.data.orderNum==1){
+        self.data.orderNum = 2;
+      }else{
+        self.getLabelData();  
+      };
+      
     };
     api.skuGet(postData,callback);
   },
 
   addOrder(){
     const self = this;
+    if(!self.data.chooseId){
+      api.showToast('请选择场次','none');
+      self.data.buttonCanClick = true ;
+      self.setData({
+        web_buttonCanClick:self.data.buttonCanClick
+      });
+      return;
+    }
+    self.data.buttonCanClick = false;
+    self.setData({
+      web_buttonCanClick:self.data.buttonCanClick
+    });
+
+    if(self.data.dayLimit>=parseInt(self.data.skuData.standard)){
+      api.showToast('该时段今日已预约满','none');
+      self.data.buttonCanClick = true ;
+      self.setData({
+        web_buttonCanClick:self.data.buttonCanClick
+      });
+      return;
+    };
     const postData = {
         token:wx.getStorageSync('token'),
         sku:[
@@ -192,21 +254,25 @@ Page({
         data:{
           passage1:api.timestampToTime(parseInt(self.data.selectData))+self.data.title,
           labelId:self.data.mainData.label[self.data.mainData.category_id].id,
-          timeId:self.data.skuData.sku_item[0]
+          timeId:self.data.skuData.sku_item[0],
+          express_info:self.data.skuData.id
         }
       };
       console.log(postData)
       const callback = (res)=>{
         self.data.order_id = res.info.id;
         if(res&&res.solely_code==100000){
+          self.data.buttonCanClick = true;
+          self.setData({
+            web_buttonCanClick:self.data.buttonCanClick
+          });
           api.pathTo('/pages/appoint_detail/appoint_detail?order_id='+self.data.order_id+'&&storeName='+self.data.mainData.label[self.data.mainData.category_id].title,'nav')       
         }else{
           api.showToast(res.msg,'none')
         };
-        
+        self.getMainData();
       };
-      api.addOrder(postData,callback);
-     
+      api.addOrder(postData,callback);    
   },
 
 
@@ -214,7 +280,7 @@ Page({
     const self  = this;
     console.log('picker发送选择改变，携带值为', e.detail.value)
     self.data.selectData = ((new Date(e.detail.value).getTime()));
-    console.log(self.data.selectData)
+    console.log('bindDateChange',self.data.selectData)
     self.setData({
       web_selectData:self.data.selectData
     })

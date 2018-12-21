@@ -61,55 +61,61 @@
 		</view>
 	</view>
 </view>
-<view id="choose" class="{{isShow?'sildeIn':'slideOut'}}">
-	<view class="w710" style="padding-top: 20rpx;">
-		<view class="flexRowBetween pricity">
-			<view class="choose_pro">
-				<image src="{{web_mainData.mainImg[0].url}}"></image>
-			</view>
-			<view class="product_txt">
-				<view class="font28">{{web_mainData.title}}</view>
-				<view class="font24 avoidOverflow">
-					{{web_mainData.description}}
+<view id="choose" style="{{isShow?'bottom:0':'bottom:-100%'}}">
+	<view class="choose_cont">
+		<view class="w710" style="padding-top: 20rpx;">
+			<view class="flexRowBetween pricity">
+				<view class="choose_pro">
+					<image src="{{web_mainData.mainImg[0].url}}"></image>
 				</view>
-				
-				<view class="font24 color2 flex">
-					<view class="color2">非会员价:￥{{web_skuData.price?web_skuData.price:web_mainData.price}}|
+				<view class="product_txt">
+					<view class="font28">{{web_mainData.title}}</view>
+					<view class="font24 avoidOverflow">
+						{{web_mainData.description}}
 					</view>
-					<view class="color2">
-						会员价:{{web_skuData.vipPrice?web_skuData.vipPrice:web_mainData.price}}元
-					</view>
-				</view>
-				<view class="font26 color2">预约金:{{web_skuData.reservaPrice?web_skuData.reservaPrice:web_mainData.price}}</view>
-			</view>
-			<view class="close" bindtap="close">
-			<view style="width:19px;height:19px;{{img}};background-position:-270px 0;"></view>
-			</view>
-		</view>
-		<view id="date">
-			<view class="flexRowBetween">
-				<picker mode="date" value="{{web_selectData}}" start="{{func.timestampToTime(web_selectData)}}" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
-					<view class="flex">
-						<view class="picker font28" style="width:43%;">
-						预约日期: {{func.timestampToTime(web_selectData)}}
+					
+					<view class="font24 color2 flex">
+						<view class="color2">非会员价:￥{{web_skuData.price?web_skuData.price:web_mainData.price}}|
 						</view>
-						<view class="order_up" style="width:30%;">
-							<image src="/images/order_up.png"></image>
+						<view class="color2">
+							会员价:{{web_skuData.vipPrice?web_skuData.vipPrice:web_mainData.price}}元
 						</view>
 					</view>
-				</picker>
-				
+					<view class="font26 color2">预约金:{{web_skuData.reservaPrice?web_skuData.reservaPrice:web_mainData.price}}</view>
+				</view>
+				<view class="close" bindtap="close">
+				<view style="width:19px;height:19px;{{img}};background-position:-270px 0;"></view>
+				</view>
 			</view>
-			<view class="date_time flex">
-				<view class="time_left font28">预约时间</view>
-				<view class="time_right flex">
-					<block wx:for="{{web_mainData.sku}}" wx:key="id">
-						<view class="time1" style="{{item.stock>0?(web_chooseId==item.id?'background:#3ab3c3;color:#fff':''):'background:rgba(153,153,153,0.2);color:#666;border:1px dashed #3ab3c3'}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
-					</block>
+			<view id="date">
+				<view class="flexRowBetween">
+					<picker mode="date" value="{{web_selectData}}" start="{{func.timestampToTime(web_selectData)}}" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
+						<view class="flex">
+							<view class="picker font28" style="width:43%;">
+							预约日期: {{func.timestampToTime(web_selectData)}}
+							</view>
+							<view class="order_up" style="width:30%;">
+								<image src="/images/order_up.png"></image>
+							</view>
+						</view>
+					</picker>
+					
+				</view>
+				<view class="date_time flex1">
+					<view class="time_left font28">预约时间</view>
+					<view class="time_right">
+						<scroll-view scroll-Y style="height:180rpx;">
+							<view class="flex" style="flex-wrap:wrap;width:100%;">
+								<block wx:for="{{web_mainData.sku}}" wx:key="id">
+									<view class="time1" style="{{item.stock>0?(web_chooseId==item.id?'background:#3ab3c3;color:#fff':''):'background:rgba(153,153,153,0.2);color:#666;border:1px dashed #3ab3c3'}}" data-title = "{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}"   data-id="{{item.id}}" bindtap="choose">{{func.getArrayByTarget(web_skuLabel,'id',item.sku_item)[0]['title']}}</view>
+								</block>
+							</view>
+						</scroll-view>
+					</view>
 				</view>
 			</view>
 		</view>
+		<button class="submit_info" bindtap="{{web_buttonCanClick?'addOrder':''}}" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
 	</view>
-	<button class="submit_info" bindtap="{{web_buttonCanClick?'addOrder':''}}" data-path="/pages/appoint_detail/appoint_detail?id={{web_chooseId}}&passage1={{web_selectData}}&storeName={{web_mainData.label[web_mainData.category_id].title}}&labelId={{web_labelId}}">确认</button>
 </view>
 

@@ -14,6 +14,8 @@ view{
 	height:292rpx;
 	position: relative;
 	margin:20rpx 0;
+	border-radius:14rpx;
+	overflow:hidden;
 }
 .member image{
 	width:100%;
@@ -46,6 +48,7 @@ view{
 }
 .instruction{
 	margin-top: 70rpx;
+	margin-bottom:30rpx;
 }
 .instruction_box{
 	border:solid 1px #e0e0e0;

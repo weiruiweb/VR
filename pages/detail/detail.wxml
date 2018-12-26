@@ -89,7 +89,7 @@
 			</view>
 			<view id="date">
 				<view class="flexRowBetween">
-					<picker mode="date" value="{{web_selectData}}" start="{{func.timestampToTime(web_selectData)}}" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
+					<picker mode="date" value="{{web_selectData}}" start="{{func.timestampToTime(web_todayTime)}}" end="2080-09-01"  bindchange="bindDateChange" style="width:100%">
 						<view class="flex">
 							<view class="picker font28" style="width:43%;">
 							预约日期: {{func.timestampToTime(web_selectData)}}
@@ -99,7 +99,6 @@
 							</view>
 						</view>
 					</picker>
-					
 				</view>
 				<view class="date_time flex1">
 					<view class="time_left font28">预约时间</view>

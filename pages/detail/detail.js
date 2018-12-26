@@ -41,6 +41,7 @@ Page({
       withShareTicket: true
     });
     self.data.selectData = new Date(new Date().toLocaleDateString()).getTime();
+    console.log('self.data.selectData',self.data.selectData)
     self.getMainData();
     self.data.hour = new Date().getHours();  
     self.data.minutes = new Date().getMinutes();
@@ -48,7 +49,8 @@ Page({
     console.log('self.data.minutes',self.data.minutes);
     console.log(new Date(new Date().toLocaleDateString()).getTime())
     self.setData({
-      web_selectData:new Date(new Date().toLocaleDateString()).getTime(),
+      web_selectData:self.data.selectData,
+      web_todayTime:new Date(new Date().toLocaleDateString()).getTime(),
       img:app.globalData.img
     });
   },
@@ -168,10 +170,13 @@ Page({
     var chooseTime = (self.data.title.split('-')[0]).split(':');
     self.data.chooseHour = parseInt(chooseTime[0]);
     self.data.chooseMinutes = parseInt(chooseTime[1]);
-    if(self.data.chooseHour<self.data.hour||(self.data.chooseHour==self.data.hour&&self.data.chooseMinutes<self.data.minutes)){
+    if(self.data.selectData==new Date(new Date().toLocaleDateString()).getTime()){
+      if(self.data.chooseHour<self.data.hour||(self.data.chooseHour==self.data.hour&&self.data.chooseMinutes<self.data.minutes)){
       api.showToast('该场次暂停预约','none');
-      return;
-    };
+        return;
+      };
+    }
+    
     self.data.chooseId = api.getDataSet(e,'id');
     console.log('self.data.chooseHour',self.data.chooseHour)
     console.log('self.data.chooseMinutes',self.data.chooseMinutes)
@@ -279,11 +284,14 @@ Page({
   bindDateChange: function(e) {
     const self  = this;
     console.log('picker发送选择改变，携带值为', e.detail.value)
-    self.data.selectData = ((new Date(e.detail.value).getTime()));
-    console.log('bindDateChange',self.data.selectData)
+    var timeArr = e.detail.value.replace(/ |:/g, '-').split('-');
+    console.log('timeArr', timeArr)
+    self.data.selectData = new Date(timeArr[0],timeArr[1]-1,timeArr[2]).getTime();
+
+    console.log('bindDateChange',self.data.selectData);
     self.setData({
       web_selectData:self.data.selectData
-    })
+    });
     self.getMainData()
   },
 

@@ -160,6 +160,8 @@ Page({
     api.productGet(postData,callback);   
   },
 
+
+
   getArticleData(){
     const self = this;
     const postData = {};
@@ -193,6 +195,8 @@ Page({
     };
     api.articleGet(postData,callback);   
   },
+
+
 
   inputChange(e){
     const self = this;

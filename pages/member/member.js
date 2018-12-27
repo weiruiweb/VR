@@ -84,6 +84,14 @@ Page({
     api.articleGet(postData,callback);
   },
 
+  onReachBottom() {
+    const self = this;
+    if(!self.data.isLoadAll){
+      self.data.paginate.currentPage++;
+      self.getMainData();
+    };
+  },
+
 
 
   intoPath(e){

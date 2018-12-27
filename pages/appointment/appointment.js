@@ -116,6 +116,14 @@ Page({
     api.productGet(postData,callback);   
   },
 
+  onReachBottom() {
+    const self = this;
+    if(!self.data.isLoadAll){
+      self.data.paginate.currentPage++;
+      self.getMainData();
+    };
+  },
+
   checkLoadComplete(){
     const self = this;
     var complete = api.checkArrayEqual(self.data.complete_api,['getMainData','getLabelData']);

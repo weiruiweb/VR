@@ -283,13 +283,16 @@ Page({
 
   bindDateChange: function(e) {
     const self  = this;
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    var timeArr = e.detail.value.replace(/ |:/g, '-').split('-');
+    console.log('picker发送选择改变，携带值为', e.detail.value);
+    var timeArr=e.detail.value.replace('-', '/'); 
+    timeArr= timeArr.replace('-', '/'); 
+    timeArr = e.detail.value.replace(/ |:/g, '-').split('-');
     console.log('timeArr', timeArr)
     self.data.selectData = new Date(timeArr[0],timeArr[1]-1,timeArr[2]).getTime();
-
+    self.data.chooseId = '';
     console.log('bindDateChange',self.data.selectData);
     self.setData({
+      webn_chooseId:self.data.chooseId,
       web_selectData:self.data.selectData
     });
     self.getMainData()

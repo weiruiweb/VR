@@ -146,3 +146,7 @@ button{
 	border: none;
 	background: none;
 }
+
+.copyright text{
+  	margin:0 12rpx;
+  }

@@ -146,7 +146,7 @@
         </view>
     </view>
 </view>
-<view class="font22 color6" style="text-align:center;">技术支持：西安纯粹科技有限公司</view>
+<view class="font22 color6 copyright" style="text-align:center;"><text>版权所有：十一维时空</text><text> 技术支持：纯粹科技</text></view>
 <view style="width:100%;height:160rpx;"></view>
 <view class="navbar">
     <view class="navbar_item" >

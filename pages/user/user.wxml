@@ -54,11 +54,11 @@
         <view class="nav_img" style="{{img}};background-position:-0px -60px;"></view>
         <view class="text">首页</view>
     </view>
-    <view class="navbar_item"   bindtap="intoPath" data-path="/pages/appointment/appointment?id={{web_labelData[0].id}}">
+    <view class="navbar_item"   bindtap="intoPathRedi" data-path="/pages/appointment/appointment?id={{web_labelData[0].id}}">
         <view class="nav_img" style="{{img}};background-position:-56px -60px;"></view>
         <view class="text">预约</view>
     </view>
-    <view class="navbar_item"   bindtap="intoPathRedi" data-path="/pages/user/user">
+    <view class="navbar_item">
         <view class="nav_img" style="{{img}};background-position:-135px -60px;"></view>
         <view class="text this-text">我的</view>
     </view>

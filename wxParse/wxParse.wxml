@@ -83,6 +83,11 @@
       <template is="wxParseImg" data="{{item}}" />
     </block>
 
+
+    <block wx:elif="{{item.tag == 'iframe'}}">
+      <template is="wxParseVideo" data="{{item}}" />
+    </block>
+
     <!--a类型-->
     <block wx:elif="{{item.tag == 'a'}}">
       <view bindtap="wxParseTagATap" class="wxParse-inline {{item.classStr}} wxParse-{{item.tag}}" data-src="{{item.attr.href}}" style="{{item.styleStr}}">

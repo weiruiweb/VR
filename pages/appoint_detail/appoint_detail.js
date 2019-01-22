@@ -278,7 +278,7 @@ Page({
             count:(self.data.cardData[self.data.index].ratio*self.data.pay.card.price).toFixed(2)/100,
             trade_info:'会员消费返积分',
             user_no:wx.getStorageSync('info').user_no,
-            type:2,
+            type:3,
             thirdapp_id:getApp().globalData.thirdapp_id
           }
         }

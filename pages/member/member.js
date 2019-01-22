@@ -11,8 +11,7 @@ Page({
     searchItem:{
       thirdapp_id:getApp().globalData.thirdapp_id,
       type:2,
-      discount:['>',0],
-      discount:['<',100]
+      member:'true'
     }
   },
   //事件处理函数
@@ -33,6 +32,7 @@ Page({
       api.clearPageIndex(self);
     }
     const postData = {};
+    postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = api.cloneForm(self.data.searchItem);
   
     const callback = (res)=>{

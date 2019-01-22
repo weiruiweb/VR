@@ -28,6 +28,7 @@ Page({
  
   onLoad(options) {
     const self = this;
+    self.data.paginate = api.cloneForm(getApp().globalData.paginate);
     self.getSliderData();
     self.getLabelData();
     self.getProductData();
@@ -100,6 +101,7 @@ Page({
   getScoreData(){
     const self = this;
     const postData = {};
+    postData.paginate = api.cloneForm(self.data.paginate);
     postData.searchItem = {
       type:1,
       thirdapp_id:getApp().globalData.thirdapp_id,
@@ -140,7 +142,7 @@ Page({
     postData.searchItem = {
       thirdapp_id:getApp().globalData.thirdapp_id,
       type:2,
-      discount:100
+      member:'false'
     };
     postData.order = {
       listorder:'desc'
@@ -194,6 +196,14 @@ Page({
       })
     };
     api.articleGet(postData,callback);   
+  },
+
+  onReachBottom() {
+    const self = this;
+    if(!self.data.isLoadAll){
+      self.data.paginate.currentPage++;
+      self.getScoreData();
+    };
   },
 
 

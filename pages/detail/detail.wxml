@@ -13,7 +13,6 @@
       </swiper>
     </view>
 </view>
-
 <view class="detail w710">
 	<view class="product_top">
 		<view class="price_sale flex">
@@ -75,10 +74,10 @@
 					</view>
 					
 					<view class="font24 color2 flex">
-						<view class="color2">非会员价:￥{{web_skuData.price?web_skuData.price:web_mainData.price}}|
+						<view class="color2">非会员价:￥{{web_skuData.price?web_skuData.price:'0.00'}}|
 						</view>
 						<view class="color2">
-							会员价:{{web_skuData.vipPrice?web_skuData.vipPrice:web_mainData.price}}元
+							会员价:{{web_skuData.vipPrice?web_skuData.vipPrice:'0.00'}}元
 						</view>
 					</view>
 					<view class="font26 color2">预约金:{{web_skuData.reservaPrice?web_skuData.reservaPrice:web_mainData.price}}</view>
